@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
     
+  resources :tipo_clientes
   devise_for :users
   
   devise_scope :user do
