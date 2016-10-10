@@ -11,16 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010225858) do
+ActiveRecord::Schema.define(version: 20161010232703) do
 
   create_table "clientes", force: :cascade do |t|
-    t.string   "nombre",     limit: 255
-    t.string   "apellido",   limit: 255
-    t.string   "direccion",  limit: 255
-    t.string   "telefono",   limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "nombre",          limit: 255
+    t.string   "apellido",        limit: 255
+    t.string   "direccion",       limit: 255
+    t.string   "telefono",        limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "tipo_cliente_id", limit: 4
   end
+
+  add_index "clientes", ["tipo_cliente_id"], name: "index_clientes_on_tipo_cliente_id", using: :btree
 
   create_table "tipo_clientes", force: :cascade do |t|
     t.string   "descripcion", limit: 255
