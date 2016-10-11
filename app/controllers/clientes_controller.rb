@@ -25,7 +25,6 @@ class ClientesController < ApplicationController
   # POST /clientes.json
   def create
     @cliente = Cliente.new(cliente_params)
-
     respond_to do |format|
       if @cliente.save
         format.html { redirect_to @cliente, notice: 'Cliente was successfully created.' }
@@ -40,6 +39,7 @@ class ClientesController < ApplicationController
   # PATCH/PUT /clientes/1
   # PATCH/PUT /clientes/1.json
   def update
+    
     respond_to do |format|
       if @cliente.update(cliente_params)
         format.html { redirect_to @cliente, notice: 'Cliente was successfully updated.' }
@@ -69,6 +69,6 @@ class ClientesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cliente_params
-      params.require(:cliente).permit(:nombre, :apellido, :direccion, :telefono)
+      params.require(:cliente).permit(:nombre, :apellido, :direccion, :telefono, :tipo_cliente_id)
     end
 end

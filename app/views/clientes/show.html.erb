@@ -19,6 +19,9 @@
   <strong>Telefono:</strong>
   <%= @cliente.telefono %>
 </p>
-
+<p>
+  <strong>Tipo Cliente:</strong>
+  <%= @cliente.tipo_cliente.descripcion %>
+</p>
 <%= link_to 'Edit', edit_cliente_path(@cliente) %> |
 <%= link_to 'Back', clientes_path %>
