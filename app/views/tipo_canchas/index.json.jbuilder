@@ -1,0 +1,1 @@
+json.array! @tipo_canchas, partial: 'tipo_canchas/tipo_cancha', as: :tipo_cancha

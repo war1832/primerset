@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010232703) do
+ActiveRecord::Schema.define(version: 20161012000453) do
+
+  create_table "canchas", force: :cascade do |t|
+    t.string   "name",          limit: 255
+    t.integer  "TipoCancha_id", limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "canchas", ["TipoCancha_id"], name: "index_canchas_on_TipoCancha_id", using: :btree
 
   create_table "clientes", force: :cascade do |t|
     t.string   "nombre",          limit: 255
@@ -24,6 +33,12 @@ ActiveRecord::Schema.define(version: 20161010232703) do
   end
 
   add_index "clientes", ["tipo_cliente_id"], name: "index_clientes_on_tipo_cliente_id", using: :btree
+
+  create_table "tipo_canchas", force: :cascade do |t|
+    t.string   "descripcion", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "tipo_clientes", force: :cascade do |t|
     t.string   "descripcion", limit: 255

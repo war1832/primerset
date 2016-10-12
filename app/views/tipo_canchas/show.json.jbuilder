@@ -1,0 +1,1 @@
+json.partial! "tipo_canchas/tipo_cancha", tipo_cancha: @tipo_cancha

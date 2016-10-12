@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
     
+  resources :canchas
+  resources :tipo_canchas
   resources :clientes
   resources :tipo_clientes
   devise_for :users
