@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 const MetisMenu = (($) => {
 
   const NAME = 'metisMenu';
