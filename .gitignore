@@ -1,0 +1,4 @@
+*.log
+.bundle
+log/
+tmp/
