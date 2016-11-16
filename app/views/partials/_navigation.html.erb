@@ -75,14 +75,21 @@
                                 <li>
                                 	<a href="">Perfil de <%= current_user.email %></a>
                                 </li>
+                                
+                            <% if current_user.admin?  %>
+                            
+                                <li>
+                                	<a href="">Agregar Tipo de Cancha</a>
+                                </li>
+                                
 						        <li>
                                 	<a href="">Agregar Cancha</a>
                                 </li>
-                                
+                                                                
                                 <li>
                                 	<a href="">Agregar Tipo de Cliente</a>
                                 </li>
-                                <% if current_user.admin?  %>
+                                
                                 <li>
                                 	<a href="">Agregar Usuario</a>
                                 </li>
