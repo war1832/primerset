@@ -1,14 +1,25 @@
-<p id="notice"><%= notice %></p>
+<%= render "partials/navigation" %>
+<!-- Page Content -->
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">	
+			<h1>Detalle de la cancha</h1>
+			<hr />
+			<p>
+		  		<strong>Id:</strong>
+			  	<%= @cancha.id %>
+			</p>
+			<p>
+			  <strong>Nombre:</strong>
+			  <%= @cancha.name %>
+			</p>
+			<p>
+			  <strong>Tipo:</strong>
+			  <%= @cancha.TipoCancha.descripcion %>
+			</p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @cancha.name %>
-</p>
-
-<p>
-  <strong>Tipocancha:</strong>
-  <%= @cancha.TipoCancha.descripcion %>
-</p>
-
-<%= link_to 'Edit', edit_cancha_path(@cancha) %> |
-<%= link_to 'Back', canchas_path %>
+			</div>
+		</div>
+	</div>
+</div>
