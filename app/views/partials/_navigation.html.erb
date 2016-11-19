@@ -79,18 +79,29 @@
                             <% if current_user.admin?  %>
                             
                                 <li>
-                                	<a href="">Agregar Tipo de Cancha</a>
+                                	<%= link_to 'Agregar Tipo de Cancha', new_tipo_cancha_path %>
+                                	
+                                </li>                               
+                                <li>
+                                	<%= link_to 'Listar Tipos de Canchas', tipo_canchas_path %>
+                                	
                                 </li>
                                 
 						        <li>
-                                	<a href="">Agregar Cancha</a>
+						        	<%= link_to 'Agregar Cancha', new_cancha_path %>
                                 </li>
-                                                                
+ 						        <li>
+						        	<%= link_to 'Listar Canchas', canchas_path %>
+                                </li>           
+                                
                                 <li>
-                                	<a href="">Agregar Tipo de Cliente</a>
+                                	<%= link_to 'Agregar Tipo de Cliente', new_tipo_cliente_path %>
                                 </li>
                                 
                                 <li>
+                                	<%= link_to 'Listar Tipos de Cliente', tipo_clientes_path %>
+                                <li>
+                                	
                                 	<a href="">Agregar Usuario</a>
                                 </li>
                                 <% end %>
