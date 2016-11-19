@@ -1,9 +1,15 @@
-<p id="notice"><%= notice %></p>
+<%= render "partials/navigation" %>
+<!-- Page Content -->
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">	
+            	<h1>Detalle de Tipo de Cancha</h1>
+			<p>
+			  <strong>Descripcion:</strong>
+			  <%= @tipo_cancha.descripcion %>
+			</p>
 
-<p>
-  <strong>Descripcion:</strong>
-  <%= @tipo_cancha.descripcion %>
-</p>
-
-<%= link_to 'Edit', edit_tipo_cancha_path(@tipo_cancha) %> |
-<%= link_to 'Back', tipo_canchas_path %>
+			</div>
+		</div>
+	</div>
