@@ -1,5 +1,7 @@
 class TipoClientesController < ApplicationController
   before_action :set_tipo_cliente, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_filter :verify_is_admin
 
   # GET /tipo_clientes
   # GET /tipo_clientes.json
@@ -71,4 +73,11 @@ class TipoClientesController < ApplicationController
     def tipo_cliente_params
       params.require(:tipo_cliente).permit(:descripcion)
     end
+    
+    def verify_is_admin
+       unless current_user && current_user.admin?
+         redirect_to :controller => 'welcome', :action => 'index' 
+       end
+    end
+    
 end

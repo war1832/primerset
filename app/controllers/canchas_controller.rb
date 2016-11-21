@@ -1,6 +1,8 @@
 class CanchasController < ApplicationController
   before_action :set_cancha, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!
+  before_filter :verify_is_admin
+  
   # GET /canchas
   # GET /canchas.json
   def index
@@ -70,5 +72,11 @@ class CanchasController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def cancha_params
       params.require(:cancha).permit(:name, :TipoCancha_id)
+    end
+    
+    def verify_is_admin
+       unless current_user && current_user.admin?
+         redirect_to :controller => 'welcome', :action => 'index' 
+       end
     end
 end

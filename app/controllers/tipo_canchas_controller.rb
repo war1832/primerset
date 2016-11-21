@@ -1,5 +1,7 @@
 class TipoCanchasController < ApplicationController
   before_action :set_tipo_cancha, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_filter :verify_is_admin
 
   # GET /tipo_canchas
   # GET /tipo_canchas.json
@@ -70,5 +72,11 @@ class TipoCanchasController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def tipo_cancha_params
       params.require(:tipo_cancha).permit(:descripcion)
+    end
+    
+    def verify_is_admin
+       unless current_user && current_user.admin?
+         redirect_to :controller => 'welcome', :action => 'index' 
+       end
     end
 end

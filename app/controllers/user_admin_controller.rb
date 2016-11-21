@@ -1,4 +1,6 @@
 class UserAdminController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :verify_is_admin 
   
   def index
     @users = User.all
@@ -28,6 +30,12 @@ class UserAdminController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:email, :password,:password_confirmation, :admin)
+    end
+    
+    def verify_is_admin
+       unless current_user && current_user.admin?
+         redirect_to :controller => 'welcome', :action => 'index' 
+       end
     end
     
 end
