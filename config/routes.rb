@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :tipo_canchas
   resources :clientes
   resources :tipo_clientes
+  resources :user_admin
+  
   devise_for :users
   
   devise_scope :user do

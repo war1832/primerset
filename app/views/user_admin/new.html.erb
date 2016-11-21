@@ -1,0 +1,47 @@
+<%= render "partials/navigation" %>
+<div id="page-wrapper">
+    <div class="container-fluid">  
+      <div class="row">
+        <div class="col-md-6 col-md-offset-2">
+       
+
+        <h1>Alta de Usuario</h1>
+        <hr />
+          <%= form_for(:user, :url => {:controller => 'user_admin', :action => 'create'}) do |f| %>
+
+          <%= f.label :email %>
+          <%= f.email_field :email, class: 'form-control' %>
+
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'form-control' %>
+
+           <%= f.label :password_confirmation, "Confirmacion" %>
+           <%= f.password_field :password_confirmation, class: 'form-control' %>
+           
+           <div class="form-group">
+           <%= f.label :admin, "Es Admin?" %> 
+           <%= f.check_box :admin %>
+           
+           </div>
+           
+           <hr>
+           <div class="form-group">
+              <%= f.submit "Enviar", class: "btn btn-primary" %>
+           </div>
+           
+         <% if @user.errors.any? %>       
+          <div class="message">
+             <div class="alert alert-danger alert-dismissible">
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <% for message_error in @user.errors.full_messages %>
+                  <p><strong><%= message_error %></strong></p>
+                <% end %>
+             </div>
+          </div>
+        <% end %>
+ 
+        <% end %>
+       </div>
+     </div>
+  </div>
+</div>
