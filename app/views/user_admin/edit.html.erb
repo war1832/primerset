@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-6 col-md-offset-2">
        
-        <h1>Alta de Usuario</h1>
+        <h1>Edicion de Usuario</h1>
         <hr />
           <%= form_for( @user, :url => {:controller => 'user_admin', :action => 'update'}, method: :put ) do |f| %>
 
@@ -46,8 +46,8 @@
  
         <% end %>
                    <hr />
-           <h3>Cancel my account</h3>
-        		<p>Unhappy? <%= button_to "Cancel mi cuenta", user_admin_url, data: { confirm: "Are you sure?" }, method: :delete %></p>
+           <h3>Eliminar la cuenta</h3>
+        		<p><%= button_to "Cancel mi cuenta", user_admin_url, data: { confirm: "Are you sure?" }, method: :delete %></p>
            
        </div>
      </div>

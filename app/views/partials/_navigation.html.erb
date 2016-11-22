@@ -18,9 +18,11 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li>
+                        	<%= link_to '<i class="fa fa-user fa-fw"></i> Perfil'.html_safe, user_admin_path(:id => current_user.id) %>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li>
+                        	<%= link_to '<i class="fa fa-gear fa-fw"></i> Editar'.html_safe, edit_user_admin_path(:id => current_user.id) %>
                         </li>
                         <li class="divider"></li>
                         <li>
@@ -73,7 +75,7 @@
                             <a href="#"><i class="fa fa-gear fa-fw"></i> Configuracion<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                	<a href="">Perfil de <%= current_user.email %></a>
+                                <%= link_to 'Perfil de Usuario', user_admin_path(:id => current_user.id) %>	
                                 </li>
                                 
                             <% if current_user.admin?  %>
@@ -100,10 +102,6 @@
                                 
                                 <li>
                                 	<%= link_to 'Listar Tipos de Cliente', tipo_clientes_path %>
-                                <li>
-                                	
-                                	<a href="">Agregar Usuario</a>
-                                </li>
                                 <% end %>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -118,6 +116,22 @@
                                 </li>
                                 <li>
                                 	<a href="">Ultimos Accessos</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <% end %>
+                        
+                        <% if current_user.admin? %>
+                        
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> Usuarios del Sistema<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                	<%= link_to 'Listar Usuarios', user_admin_index_path %>	
+                                </li>
+                                <li>
+                                	<%= link_to 'Agregar Usuario', new_user_admin_path %>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

@@ -10,6 +10,10 @@
     <div class="col-sm-6 col-md-3">
     	
         <%= image_tag "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&f=y", :class => "img-circle img-responsive center-block" %>
+        <% if current_user.admin? %>
+        	<hr />
+        	<%= link_to "Editar Usuario", edit_user_admin_path(:id => current_user.id) , class: "btn btn-primary center-block" %>
+       	<% end %>
         <hr>
         <h4>Estadisticas</h4>
         <ul>
