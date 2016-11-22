@@ -1,0 +1,46 @@
+<%= render "partials/navigation" %>
+<div id="page-wrapper">
+    <div class="container-fluid">  
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+<div class="row">
+	<h1> Perfil de Usuario </h1>
+	<hr />
+    <div class="col-sm-6 col-md-3">
+    	
+        <%= image_tag "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&f=y", :class => "img-circle img-responsive center-block" %>
+        <hr>
+        <h4>Estadisticas</h4>
+        <ul>
+          <li>Turnos Reservados: 123 </li>
+          <li>Clientes agregados: 123 </li>
+        </ul>
+    </div>
+    <div class="col-sm-8 col-md-9">
+        <h3>Profile</h3>
+          <table class="table table-user-information">
+            <tbody>
+              <tr>
+                <td><strong>Email</strong></td>
+                <td><%= @user.email %></td>
+              </tr>
+              <tr>
+                <td><strong>IP Actual</strong></td>
+                <td><%= @user.current_sign_in_ip %></td>
+              </tr>
+              <tr>
+                <td><strong>Cantidad de ingresos</strong></td>
+                <td><%= @user.sign_in_count %></td>
+              </tr>
+              <tr>
+                <td><strong>Ultimo Ingreso</strong></td>
+                <td><%= @user.last_sign_in_at.strftime('%d/%m/%Y') %></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+</div>
+</div>
+</div>
