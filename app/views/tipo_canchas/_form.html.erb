@@ -1,25 +1,27 @@
 <%= form_for @tipo_cancha, :html => { :class => "form-horizontal" } do |f| %>
-  <% if @tipo_cancha.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tipo_cancha.errors.count, "error") %> prohibited this tipo_cancha from being saved:</h2>
+<% if @tipo_cancha.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@tipo_cancha.errors.count, "error") %> prohibited this tipo_cancha from being saved:</h2>
 
-      <ul>
-      <% @tipo_cancha.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<ul>
+		<% @tipo_cancha.errors.full_messages.each do |message| %>
+		<li>
+			<%= message %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
-    <div class="form-group">
-    	<%= f.label :descripcion, class: "col-sm-2 control-label" %>
-    	<div class="col-sm-4">
-    		<%= f.text_field :descripcion, class: "form-control" %>
-  		</div>
-  </div>
-  <div class="form-group">
-  	<div class="col-sm-offset-2 col-sm-6">
-    <%= f.submit "Enviar", class: "btn btn-primary" %>
- 	 </div>
-  </div>
+<div class="form-group">
+	<%= f.label :descripcion, class: "col-sm-2 control-label" %>
+	<div class="col-sm-4">
+		<%= f.text_field :descripcion, class: "form-control" %>
+	</div>
+</div>
+<div class="form-group">
+	<div class="col-sm-offset-2 col-sm-6">
+		<%= f.submit "Enviar", class: "btn btn-primary" %>
+	</div>
+</div>
 <% end %>

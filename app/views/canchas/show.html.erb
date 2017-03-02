@@ -1,23 +1,22 @@
-<%= render "partials/navigation" %>
-<!-- Page Content -->
+<%= render "partials/navigation" %> <!-- Page Content -->
 <div id="page-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">	
-			<h1>Detalle de la cancha</h1>
-			<hr />
-			<p>
-		  		<strong>Id:</strong>
-			  	<%= @cancha.id %>
-			</p>
-			<p>
-			  <strong>Nombre:</strong>
-			  <%= @cancha.name %>
-			</p>
-			<p>
-			  <strong>Tipo:</strong>
-			  <%= @cancha.TipoCancha.descripcion %>
-			</p>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1>Detalle de la cancha</h1>
+				<hr />
+				<p>
+					<strong>Id:</strong>
+					<%= @cancha.id %>
+				</p>
+				<p>
+					<strong>Nombre:</strong>
+					<%= @cancha.name %>
+				</p>
+				<p>
+					<strong>Tipo:</strong>
+					<%= @cancha.TipoCancha.descripcion %>
+				</p>
 
 			</div>
 		</div>

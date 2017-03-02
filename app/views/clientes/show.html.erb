@@ -1,33 +1,32 @@
-<%= render "partials/navigation" %>
-<!-- Page Content -->
+<%= render "partials/navigation" %> <!-- Page Content -->
 <div id="page-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">	
-			<h1>Detalle del Cliente</h1>
-			<hr />
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1>Detalle del Cliente</h1>
+				<hr />
 				<p>
-				  <strong>Nombre:</strong>
-				  <%= @cliente.nombre %>
+					<strong>Nombre:</strong>
+					<%= @cliente.nombre %>
 				</p>
-				
+
 				<p>
-				  <strong>Apellido:</strong>
-				  <%= @cliente.apellido %>
+					<strong>Apellido:</strong>
+					<%= @cliente.apellido %>
 				</p>
-				
+
 				<p>
-				  <strong>Direccion:</strong>
-				  <%= @cliente.direccion %>
+					<strong>Direccion:</strong>
+					<%= @cliente.direccion %>
 				</p>
-				
+
 				<p>
-				  <strong>Telefono:</strong>
-				  <%= @cliente.telefono %>
+					<strong>Telefono:</strong>
+					<%= @cliente.telefono %>
 				</p>
 				<p>
-				  <strong>Tipo Cliente:</strong>
-				  <%= @cliente.tipo_cliente.descripcion %>
+					<strong>Tipo Cliente:</strong>
+					<%= @cliente.tipo_cliente.descripcion %>
 				</p>
 			</div>
 		</div>

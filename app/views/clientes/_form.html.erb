@@ -1,55 +1,57 @@
 <%= form_for @cliente, :html => { :class => "form-horizontal" } do |f| %>
-  <% if @cliente.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
+<% if @cliente.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
 
-      <ul>
-      <% @cliente.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<ul>
+		<% @cliente.errors.full_messages.each do |message| %>
+		<li>
+			<%= message %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
-  <div class="form-group">
-    <%= f.label :nombre, class: "col-sm-2 control-label" %>
-    <div class="col-sm-4">
-	    <%= f.text_field :nombre, class: "form-control" %>
-	</div>	
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :apellido, class: "col-sm-2 control-label" %>
-    <div class="col-sm-4">
-   		<%= f.text_field :apellido, class: "form-control" %>
-  	</div>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :direccion, class: "col-sm-2 control-label" %>
-    <div class="col-sm-4">
-    	<%= f.text_field :direccion, class: "form-control" %>
-	  </div>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :telefono, class: "col-sm-2 control-label" %>
-    <div class="col-sm-4">
-    	<%= f.text_field :telefono, class: "form-control" %>
-  	</div>
-  </div>
-  
-  <div class="form-group">
-  	<%= f.label :tipo_cliente, class: "col-sm-2 control-label" %>
-  	<div class="col-sm-4">
+<div class="form-group">
+	<%= f.label :nombre, class: "col-sm-2 control-label" %>
+	<div class="col-sm-4">
+		<%= f.text_field :nombre, class: "form-control" %>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= f.label :apellido, class: "col-sm-2 control-label" %>
+	<div class="col-sm-4">
+		<%= f.text_field :apellido, class: "form-control" %>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= f.label :direccion, class: "col-sm-2 control-label" %>
+	<div class="col-sm-4">
+		<%= f.text_field :direccion, class: "form-control" %>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= f.label :telefono, class: "col-sm-2 control-label" %>
+	<div class="col-sm-4">
+		<%= f.text_field :telefono, class: "form-control" %>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= f.label :tipo_cliente, class: "col-sm-2 control-label" %>
+	<div class="col-sm-4">
 		<%= f.collection_select :tipo_cliente_id, TipoCliente.order(:id),:id, :descripcion, {} , { include_blank: false, class: "form-control" } %>
-  	</div>
-  </div>
-  
-  <div class="form-group">
-  	<div class="col-sm-offset-2 col-sm-6">
-    	<%= f.submit "Enviar", class: "btn btn-primary" %>
-  	</div>
-  </div>
-  
+	</div>
+</div>
+
+<div class="form-group">
+	<div class="col-sm-offset-2 col-sm-6">
+		<%= f.submit "Enviar", class: "btn btn-primary" %>
+	</div>
+</div>
+
 <% end %>
