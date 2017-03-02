@@ -1,29 +1,31 @@
 <%= render "partials/navigation" %>
 <div id="page-wrapper">
-    <div class="container-fluid">  
-      <div class="row">
-        <div class="col-md-11 col-md-offset-1">
-         <h1>Listado de Usuario</h1>
-        <hr />
-  <% @users.each do |user| %>
-    <div class="col-sm-3">
-      <div class="row">
-          <div class="col-sm-12">
-            <%= image_tag "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&f=y", class: 'img-circle img-responsive center-block' %>
-            <hr>
-            <p class="text-center text-danger"><strong>User:</strong> <%= user.email.capitalize %></p>
-          </div>
-      </div>
-      <div clas="row">
-        <div class="col-sm-12">
-        <p class="text-center">
-          <%= link_to 'Profile', user_admin_path(user), class: 'btn btn-info' %>
-        </p>
-        </div>
-     </div>   
-    </div>
-  <% end %>
-</div>
-</div>
-</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-11 col-md-offset-1">
+				<h1>Listado de Usuario</h1>
+				<hr />
+				<% @users.each do |user| %>
+				<div class="col-sm-3">
+					<div class="row">
+						<div class="col-sm-12">
+							<%= image_tag "avatar.png", class: 'img-circle img-responsive center-block' %>
+							<hr>
+							<p class="text-center text-danger">
+								<strong>User:</strong> <%= user.email.capitalize %>
+							</p>
+						</div>
+					</div>
+					<div clas="row">
+						<div class="col-sm-12">
+							<p class="text-center">
+								<%= link_to 'Profile', user_admin_path(user), class: 'btn btn-info' %>
+							</p>
+						</div>
+					</div>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>

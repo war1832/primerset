@@ -1,55 +1,61 @@
 <%= render "partials/navigation" %>
 <div id="page-wrapper">
-    <div class="container-fluid">  
-      <div class="row">
-        <div class="col-md-6 col-md-offset-2">
-       
-        <h1>Edicion de Usuario</h1>
-        <hr />
-          <%= form_for( @user, :url => {:controller => 'user_admin', :action => 'update'}, method: :put ) do |f| %>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-2">
 
-          <%= f.label :email %>
-          <%= f.email_field :email, class: 'form-control' %>
+				<h1>Edicion de Usuario</h1>
+				<hr />
+				<%= form_for( @user, :url => {:controller => 'user_admin', :action => 'update'}, method: :put ) do |f| %>
 
-          <%= f.label :password %>
-          <%= f.password_field :password, class: 'form-control' %>
+				<%= f.label :email %>
+				<%= f.email_field :email, class: 'form-control' %>
 
-           <%= f.label :password_confirmation, "Confirmacion" %>
-           <%= f.password_field :password_confirmation, class: 'form-control' %>
-           
-           <%= f.label :current_password, "Contraseña Actual" %> <i>(Se necesita la contraseña actual para realizar los cambios.)</i><br />
-   		   <%= f.password_field :current_password, class: 'form-control' %>
+				<%= f.label :password %>
+				<%= f.password_field :password, class: 'form-control' %>
 
-           <% if current_user.admin? %>
-	           <div class="form-group">
-		           <%= f.label :admin, "Es Admin?" %> 
-		           <%= f.check_box :admin %>
-	           </div>
-           <%end %>
-           
-           
-           <hr>
-           <div class="form-group">
-              <%= f.submit "Enviar", class: "btn btn-primary" %>
-           </div>
+				<%= f.label :password_confirmation, "Confirmacion" %>
+				<%= f.password_field :password_confirmation, class: 'form-control' %>
 
-         <% if @user.errors.any? %>       
-          <div class="message">
-             <div class="alert alert-danger alert-dismissible">
-               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <% for message_error in @user.errors.full_messages %>
-                  <p><strong><%= message_error %></strong></p>
-                <% end %>
-             </div>
-          </div>
-        <% end %>
- 
-        <% end %>
-                   <hr />
-           <h3>Eliminar la cuenta</h3>
-        		<p><%= button_to "Cancel mi cuenta", user_admin_url, data: { confirm: "Are you sure?" }, method: :delete %></p>
-           
-       </div>
-     </div>
-  </div>
+				<%= f.label :current_password, "Contraseña Actual" %> <i>(Se necesita la contraseña actual para realizar los cambios.)</i>
+				<br />
+				<%= f.password_field :current_password, class: 'form-control' %>
+
+				<% if current_user.admin? %>
+				<div class="form-group">
+					<%= f.label :admin, "Es Admin?" %>
+					<%= f.check_box :admin %>
+				</div>
+				<%end %>
+
+				<hr>
+				<div class="form-group">
+					<%= f.submit "Enviar", class: "btn btn-primary" %>
+				</div>
+
+				<% if @user.errors.any? %>
+				<div class="message">
+					<div class="alert alert-danger alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<% for message_error in @user.errors.full_messages %>
+						<p>
+							<strong><%= message_error %></strong>
+						</p>
+						<% end %>
+					</div>
+				</div>
+				<% end %>
+
+				<% end %>
+				<hr />
+				<h3>Eliminar la cuenta</h3>
+				<p>
+					<%= button_to "Cancel mi cuenta", user_admin_url, data: { confirm: "Are you sure?" }, method: :delete %>
+				</p>
+
+			</div>
+		</div>
+	</div>
 </div>
