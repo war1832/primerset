@@ -16,26 +16,23 @@
 <div class="form-group">
 	<%= f.label :cliente_id, class: "col-sm-2 control-label" %>
 	<div class="col-sm-4">
-		<%= f.text_field :cliente_id %>
+		<%= f.collection_select :cliente_id, Cliente.all , :id, :nombre_y_apellido %>
 	</div>
 </div>
 <div class="form-group">
 	<%= f.label :cancha_id, class: "col-sm-2 control-label"  %>
-	<br>
 	<div class="col-sm-4">
-		<%= f.text_field :cancha_id %>
+		<%= f.collection_select :cancha_id, Cancha.all, :id, :descripcion_con_tipo %>
 	</div>
 </div>
 <div class="form-group">
 	<%= f.label :fecha_inicio, class: "col-sm-2 control-label"  %>
-	<br>
 	<div class="col-sm-4">
 		<%= f.datetime_select :fecha_inicio %>
 	</div>
 </div>
 <div class="form-group">
 	<%= f.label :fecha_fin, class: "col-sm-2 control-label"  %>
-	<br>
 	<div class="col-sm-4">
 		<%= f.datetime_select :fecha_fin %>
 	</div>
