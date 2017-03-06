@@ -42,6 +42,13 @@
 </div>
 
 <div class="form-group">
+	<%= f.label :email, class: "col-sm-2 control-label" %>
+	<div class="col-sm-4">
+		<%= f.text_field :email, class: "form-control" %>
+	</div>
+</div>
+
+<div class="form-group">
 	<%= f.label :tipo_cliente, class: "col-sm-2 control-label" %>
 	<div class="col-sm-4">
 		<%= f.collection_select :tipo_cliente_id, TipoCliente.order(:id),:id, :descripcion, {} , { include_blank: false, class: "form-control" } %>
