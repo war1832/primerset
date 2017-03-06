@@ -1,5 +1,6 @@
 class ReservasController < ApplicationController
   before_action :set_reserva, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /reservas
   # GET /reservas.json
@@ -54,10 +55,15 @@ class ReservasController < ApplicationController
   # DELETE /reservas/1
   # DELETE /reservas/1.json
   def destroy
-    @reserva.destroy
-    respond_to do |format|
-      format.html { redirect_to reservas_url, notice: 'Reserva was successfully destroyed.' }
-      format.json { head :no_content }
+    @reserva.fecha_baja = DateTime.now
+    if @reserva.save
+      respond_to do |format|
+        format.html { redirect_to @reserva, notice: 'La reserva se dio de baja correctamente.' }
+        format.json { head :no_content }
+      end
+    else    
+       format.html { render :edit }
+       format.json { render json: @reserva.errors, status: :unprocessable_entity }
     end
   end
 
