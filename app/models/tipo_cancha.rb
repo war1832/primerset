@@ -1,3 +1,3 @@
 class TipoCancha < ActiveRecord::Base
-    has_many :canchas
+    has_many :Canchas
 end

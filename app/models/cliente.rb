@@ -1,3 +1,4 @@
 class Cliente < ActiveRecord::Base
-    belongs_to :tipo_cliente
+    belongs_to :Tipo_cliente
+    has_many :Reservas
 end
