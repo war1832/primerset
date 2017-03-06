@@ -34,9 +34,9 @@
 											<td><%= reserva.fecha_inicio %></td>
 											<td><%= reserva.fecha_fin %></td>
 											<td><%= reserva.fecha_baja %></td>
-											<td><%= link_to 'Show', reserva %></td>
-											<td><%= link_to 'Edit', edit_reserva_path(reserva) %></td>
-											<td><%= link_to 'Destroy', reserva, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+											<td><%= link_to '<i class="fa fa-user fa-fw"></i> Mostrar'.html_safe, reserva %></td>
+											<td><%= link_to '<i class="fa fa-edit fa-fw"></i> Editar'.html_safe, edit_reserva_path(reserva) %></td>
+											<td><%= link_to '<i class="fa fa-remove fa-fw"></i> Eliminar'.html_safe, reserva, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 										</tr>
 									<% end %>
 								</tbody>

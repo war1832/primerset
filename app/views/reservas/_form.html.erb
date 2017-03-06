@@ -1,33 +1,48 @@
-<%= form_for(@reserva) do |f| %>
-  <% if @reserva.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@reserva.errors.count, "error") %> prohibited this reserva from being saved:</h2>
+<%= form_for @reserva, :html => { :class => "form-horizontal" } do |f| %>
+<% if @reserva.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@reserva.errors.count, "error") %> prohibited this reserva from being saved:</h2>
 
-      <ul>
-      <% @reserva.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<ul>
+		<% @reserva.errors.full_messages.each do |message| %>
+		<li>
+			<%= message %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :cliente_id %><br>
-    <%= f.text_field :cliente_id %>
-  </div>
-  <div class="field">
-    <%= f.label :cancha_id %><br>
-    <%= f.text_field :cancha_id %>
-  </div>
-  <div class="field">
-    <%= f.label :fecha_inicio %><br>
-    <%= f.datetime_select :fecha_inicio %>
-  </div>
-  <div class="field">
-    <%= f.label :fecha_fin %><br>
-    <%= f.datetime_select :fecha_fin %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="form-group">
+	<%= f.label :cliente_id, class: "col-sm-2 control-label" %>
+	<div class="col-sm-4">
+		<%= f.text_field :cliente_id %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :cancha_id, class: "col-sm-2 control-label"  %>
+	<br>
+	<div class="col-sm-4">
+		<%= f.text_field :cancha_id %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :fecha_inicio, class: "col-sm-2 control-label"  %>
+	<br>
+	<div class="col-sm-4">
+		<%= f.datetime_select :fecha_inicio %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :fecha_fin, class: "col-sm-2 control-label"  %>
+	<br>
+	<div class="col-sm-4">
+		<%= f.datetime_select :fecha_fin %>
+	</div>
+</div>
+<div class="form-group">
+	<div class="col-sm-offset-2 col-sm-6">
+		<%= f.submit "Enviar", class: "btn btn-primary" %>
+	</div>
+</div>
 <% end %>
