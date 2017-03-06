@@ -1,35 +1,57 @@
-<p id="notice"><%= notice %></p>
+<%= render "partials/navigation" %>
 
-<h1>Listing Reservas</h1>
+<!-- Page Content -->
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Listado de Reservas</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Cliente</th>
-      <th>Cancha</th>
-      <th>Fecha inicio</th>
-      <th>Fecha fin</th>
-      <th>Fecha baja</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Reservas
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+										<tr>
+											<th>Cliente</th>
+											<th>Cancha</th>
+											<th>Fecha inicio</th>
+											<th>Fecha fin</th>
+											<th>Fecha baja</th>
+											<th colspan="3" class="text-center"">Acciones</th>
+											</tr>
+											</thead>
 
-  <tbody>
-    <% @reservas.each do |reserva| %>
-      <tr>
-        <td><%= reserva.cliente %></td>
-        <td><%= reserva.cancha %></td>
-        <td><%= reserva.fecha_inicio %></td>
-        <td><%= reserva.fecha_fin %></td>
-        <td><%= reserva.fecha_baja %></td>
-        <td><%= link_to 'Show', reserva %></td>
-        <td><%= link_to 'Edit', edit_reserva_path(reserva) %></td>
-        <td><%= link_to 'Destroy', reserva, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Reserva', new_reserva_path %>
+											<tbody>
+											<% @reservas.each do |reserva| %>
+											<tr>
+											<td><%= "#{reserva.cliente.nombre}, #{reserva.cliente.apellido} " %></td>
+											<td><%= "#{reserva.cancha.TipoCancha.descripcion} - #{reserva.cancha.name}" %></td>
+											<td><%= reserva.fecha_inicio %></td>
+											<td><%= reserva.fecha_fin %></td>
+											<td><%= reserva.fecha_baja %></td>
+											<td><%= link_to 'Show', reserva %></td>
+											<td><%= link_to 'Edit', edit_reserva_path(reserva) %></td>
+											<td><%= link_to 'Destroy', reserva, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+										</tr>
+									<% end %>
+								</tbody>
+							</table>
+						</div>
+						<!-- /.table-responsive -->
+					</div>
+					<!-- /.panel-body -->
+				</div>
+				<!-- /.panel -->
+			</div>
+			<!-- /.col-lg-12 -->
+		</div>
+		<!-- /.row -->
+	</div>
+	<!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
