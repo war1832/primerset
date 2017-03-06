@@ -15,8 +15,6 @@ class ReservasController < ApplicationController
   # GET /reservas/new
   def new
     @reserva = Reserva.new
-    @reserva.cliente = Cliente.new
-    @reserva.cancha = Cancha.new
   end
 
   # GET /reservas/1/edit
