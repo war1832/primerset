@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
     
+  resources :reservas
   resources :canchas
   resources :tipo_canchas
   resources :clientes

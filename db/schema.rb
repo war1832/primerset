@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012000453) do
+ActiveRecord::Schema.define(version: 20170306142035) do
 
   create_table "canchas", force: :cascade do |t|
     t.string   "name",          limit: 255
@@ -33,6 +33,19 @@ ActiveRecord::Schema.define(version: 20161012000453) do
   end
 
   add_index "clientes", ["tipo_cliente_id"], name: "index_clientes_on_tipo_cliente_id", using: :btree
+
+  create_table "reservas", force: :cascade do |t|
+    t.integer  "cliente_id",   limit: 4
+    t.integer  "cancha_id",    limit: 4
+    t.datetime "fecha_inicio"
+    t.datetime "fecha_fin"
+    t.datetime "fecha_baja"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "reservas", ["cancha_id"], name: "index_reservas_on_cancha_id", using: :btree
+  add_index "reservas", ["cliente_id"], name: "index_reservas_on_cliente_id", using: :btree
 
   create_table "tipo_canchas", force: :cascade do |t|
     t.string   "descripcion", limit: 255
@@ -65,4 +78,6 @@ ActiveRecord::Schema.define(version: 20161012000453) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "reservas", "canchas"
+  add_foreign_key "reservas", "clientes"
 end

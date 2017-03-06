@@ -1,6 +1,6 @@
 class Reserva < ActiveRecord::Base
-  belongs_to :Cliente
-  belongs_to :Cancha
+  belongs_to :cliente
+  belongs_to :cancha
 
   validates_presence_of :fecha_inicio
   validates_presence_of :fecha_fin
