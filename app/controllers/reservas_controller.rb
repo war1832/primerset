@@ -5,7 +5,8 @@ class ReservasController < ApplicationController
   # GET /reservas
   # GET /reservas.json
   def index
-    @reservas = Reserva.all
+    @reservas = Reserva.where fecha_baja: nil
+    @cancelaciones =  Reserva.where.not fecha_baja: nil
   end
 
   # GET /reservas/1

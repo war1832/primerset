@@ -16,28 +16,65 @@
 						<div class="table-responsive">
 							<table class="table">
 								<thead>
-										<tr>
-											<th>Cliente</th>
-											<th>Cancha</th>
-											<th>Fecha inicio</th>
-											<th>Fecha fin</th>
-											<th>Fecha baja</th>
-											<th colspan="3" class="text-center"">Acciones</th>
-											</tr>
-											</thead>
-
-											<tbody>
-											<% @reservas.each do |reserva| %>
-											<tr>
-											<td><%= "#{reserva.cliente.nombre}, #{reserva.cliente.apellido} " %></td>
-											<td><%= "#{reserva.cancha.TipoCancha.descripcion} - #{reserva.cancha.name}" %></td>
-											<td><%= reserva.fecha_inicio %></td>
-											<td><%= reserva.fecha_fin %></td>
-											<td><%= reserva.fecha_baja %></td>
-											<td><%= link_to '<i class="fa fa-user fa-fw"></i> Mostrar'.html_safe, reserva %></td>
-											<td><%= link_to '<i class="fa fa-edit fa-fw"></i> Editar'.html_safe, edit_reserva_path(reserva) %></td>
-											<td><%= link_to '<i class="fa fa-remove fa-fw"></i> Eliminar'.html_safe, reserva, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+									<tr>
+										<th>Cliente</th>
+										<th>Cancha</th>
+										<th>Fecha inicio</th>
+										<th>Fecha fin</th>
+										<th>Fecha baja</th>
+										<th colspan="3" class="text-center"">Acciones</th>
 										</tr>
+										</thead>
+
+										<tbody>
+										<% @reservas.each do |reserva| %>
+										<tr>
+										<td><%= "#{reserva.cliente.nombre}, #{reserva.cliente.apellido} " %></td>
+										<td><%= "#{reserva.cancha.TipoCancha.descripcion} - #{reserva.cancha.name}" %></td>
+										<td><%= reserva.fecha_inicio %></td>
+										<td><%= reserva.fecha_fin %></td>
+										<td><%= reserva.fecha_baja %></td>
+										<td><%= link_to '<i class="fa fa-user fa-fw"></i> Mostrar'.html_safe, reserva %></td>
+										<td><%= link_to '<i class="fa fa-edit fa-fw"></i> Editar'.html_safe, edit_reserva_path(reserva) %></td>
+										<td><%= link_to '<i class="fa fa-remove fa-fw"></i> Eliminar'.html_safe, reserva, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+										</tr>
+										<% end %>
+										</tbody>
+										</table>
+										</div>
+										<!-- /.table-responsive -->
+										</div>
+										<!-- /.panel-body -->
+										</div>
+										<!-- /.panel -->
+
+										<div class="panel panel-default">
+										<div class="panel-heading">
+										Cancelaciones de Reservas
+										</div>
+										<!-- /.panel-heading -->
+										<div class="panel-body">
+										<div class="table-responsive">
+										<table class="table">
+										<thead>
+										<tr>
+										<th>Cliente</th>
+										<th>Cancha</th>
+										<th>Fecha inicio</th>
+										<th>Fecha fin</th>
+										<th>Fecha baja</th>
+									</tr>
+								</thead>
+
+								<tbody>
+									<% @cancelaciones.each do |reserva| %>
+									<tr>
+										<td><%= "#{reserva.cliente.nombre}, #{reserva.cliente.apellido} " %></td>
+										<td><%= "#{reserva.cancha.TipoCancha.descripcion} - #{reserva.cancha.name}" %></td>
+										<td><%= reserva.fecha_inicio %></td>
+										<td><%= reserva.fecha_fin %></td>
+										<td><%= reserva.fecha_baja %></td>
+									</tr>
 									<% end %>
 								</tbody>
 							</table>
@@ -47,6 +84,7 @@
 					<!-- /.panel-body -->
 				</div>
 				<!-- /.panel -->
+
 			</div>
 			<!-- /.col-lg-12 -->
 		</div>

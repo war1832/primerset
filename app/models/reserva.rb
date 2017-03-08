@@ -12,7 +12,9 @@ class Reserva < ActiveRecord::Base
                         fecha_fin BETWEEN ? AND ? ) AND  
                         cancha_id = ? AND 
                         fecha_baja IS NULL AND
-                        cliente_id <> ? ", (fecha_inicio + 1.seconds), (fecha_fin - 1.seconds), (fecha_inicio + 1.seconds), (fecha_fin - 1.seconds), cancha.id, cliente.id  ).present?
+                        cliente_id <> ? ", (fecha_inicio + 1.seconds), (fecha_fin - 1.seconds),
+                                           (fecha_inicio + 1.seconds),(fecha_fin - 1.seconds),
+                                            cancha.id, cliente.id  ).present?
         errors.add(:disponibilidad, "Ya existe un Turno en ese horario, verifique los datos de la reserva.")
       end
   end
