@@ -8,15 +8,30 @@ class Reserva < ActiveRecord::Base
   validate :validar_reserva
   
   def validar_reserva
-      if Reserva.where("(fecha_inicio BETWEEN ? AND ? OR 
+      if verificar_disponibilidad_turnos_fijos || verificar_disponibilidad_reservas
+        errors.add(:disponibilidad, "Ya existe un Turno en ese horario, verifique los datos de la reserva.")
+      end
+  end
+  
+ def verificar_disponibilidad_reservas
+  Reserva.where("(fecha_inicio BETWEEN ? AND ? OR 
                         fecha_fin BETWEEN ? AND ? ) AND  
                         cancha_id = ? AND 
                         fecha_baja IS NULL AND
                         cliente_id <> ? ", (fecha_inicio + 1.seconds), (fecha_fin - 1.seconds),
                                            (fecha_inicio + 1.seconds),(fecha_fin - 1.seconds),
                                             cancha.id, cliente.id  ).present?
-        errors.add(:disponibilidad, "Ya existe un Turno en ese horario, verifique los datos de la reserva.")
-      end
-  end
+ end
+ 
+ def verificar_disponibilidad_turnos_fijos
+     TurnosFijo.where("(HOUR(hora_inicio) BETWEEN ? AND ? OR 
+                        HOUR(hora_fin) BETWEEN ? AND ? ) AND 
+                        dia_semana = ? AND  
+                        cancha_id = ? AND 
+                        fecha_baja IS NULL AND
+                        cliente_id <> ? ", (fecha_inicio + 1.seconds).strftime("%H:%M"), (fecha_fin - 1.seconds).strftime("%H:%M"),
+                                           (fecha_inicio + 1.seconds).strftime("%H:%M"), (fecha_fin - 1.seconds).strftime("%H:%M"),
+                                           fecha_inicio.wday, cancha.id, cliente.id  ).present?
+ end
   
 end
