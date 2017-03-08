@@ -49,35 +49,36 @@
 						<li>
 							<%= link_to 'Agregar Clientes', new_cliente_path %>
 						</li>
-					</ul>
-					<!-- /.nav-second-level -->
-				</li>
-
-				<li>
-					<a href="#"><i class="fa fa-calendar-plus-o fa-fw"></i> Turnos<span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li>
-							<a href="">Buscar Turno</a>
-						</li>
-						<li>
-							<a href="">Agregar Turno Comun</a>
-						</li>
-
-						<li>
-							<a href="">Agregar Turno Fijo</a>
-						</li>
-					</ul>
-					<!-- /.nav-second-level -->
-				</li>
-
-				<li>
-					<a href="#"><i class="fa fa-gear fa-fw"></i> Configuracion<span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li>
-							<%= link_to 'Perfil de Usuario', user_admin_path(:id => current_user.id) %>
-						</li>
-
 						<% if current_user.admin?  %>
+						<li>
+							<%= link_to 'Agregar Tipo de Cliente', new_tipo_cliente_path %>
+						</li>
+
+						<li>
+							<%= link_to 'Listar Tipos de Cliente', tipo_clientes_path %>
+						</li>
+						<% end %>
+					</ul>
+					<!-- /.nav-second-level -->
+				</li>
+
+				<li>
+					<a href="#"><i class="fa fa-calendar-plus-o fa-fw"></i> Reservas <span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li>
+							<%= link_to 'Listar Reservas', reservas_path %>
+						</li>
+						<li>
+							<%= link_to 'Agregar nueva Reserva', new_reserva_path %>
+						</li>
+
+					</ul>
+					<!-- /.nav-second-level -->
+				</li>
+				<% if current_user.admin?  %>
+				<li>
+					<a href="#"><i class="fa fa-gear fa-fw"></i> Recursos <span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
 
 						<li>
 							<%= link_to 'Agregar Tipo de Cancha', new_tipo_cancha_path %>
@@ -87,7 +88,6 @@
 							<%= link_to 'Listar Tipos de Canchas', tipo_canchas_path %>
 
 						</li>
-
 						<li>
 							<%= link_to 'Agregar Cancha', new_cancha_path %>
 						</li>
@@ -95,18 +95,10 @@
 							<%= link_to 'Listar Canchas', canchas_path %>
 						</li>
 
-						<li>
-							<%= link_to 'Agregar Tipo de Cliente', new_tipo_cliente_path %>
-						</li>
-
-						<li>
-							<%= link_to 'Listar Tipos de Cliente', tipo_clientes_path %>
-							<% end %>
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>
 
-				<% if current_user.admin? %>
 				<li>
 					<a href="#"><i class="glyphicon glyphicon-eye-open"></i> Auditoria<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
@@ -121,21 +113,24 @@
 				</li>
 				<% end %>
 
-				<% if current_user.admin? %>
-
 				<li>
 					<a href="#"><i class="fa fa-user fa-fw"></i> Usuarios del Sistema<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
+						<li>
+							<%= link_to 'Perfil de Usuario', user_admin_path(:id => current_user.id) %>
+						</li>
+						<% if current_user.admin? %>
 						<li>
 							<%= link_to 'Listar Usuarios', user_admin_index_path %>
 						</li>
 						<li>
 							<%= link_to 'Agregar Usuario', new_user_admin_path %>
 						</li>
+						<% end %>
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>
-				<% end %>
+
 			</ul>
 		</div>
 		<!-- /.sidebar-collapse -->
