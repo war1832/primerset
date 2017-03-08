@@ -1,29 +1,36 @@
-<p id="notice"><%= notice %></p>
+<%= render "partials/navigation" %> <!-- Page Content -->
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1>Detalle del Turno fijo.</h1>
+				<hr />
+				<p>
+					<strong>Cliente:</strong>
+					<%= "#{@turnos_fijo.cliente.apellido}, #{@turnos_fijo.cliente.nombre}" %>
+				</p>
 
-<p>
-  <strong>Cliente:</strong>
-  <%= @turnos_fijo.cliente %>
-</p>
+				<p>
+					<strong>Cancha:</strong>
+					<%= "#{@turnos_fijo.cancha.TipoCancha.descripcion} - #{@turnos_fijo.cancha.descripcion}" %>
+				</p>
 
-<p>
-  <strong>Cancha:</strong>
-  <%= @turnos_fijo.cancha %>
-</p>
+				<p>
+					<strong>Hora inicio:</strong>
+					<%= @turnos_fijo.hora_inicio.strftime "%H:%M" %>
+				</p>
 
-<p>
-  <strong>Hora inicio:</strong>
-  <%= @turnos_fijo.hora_inicio %>
-</p>
+				<p>
+					<strong>Hora fin:</strong>
+					<%= @turnos_fijo.hora_fin.strftime "%H:%M" %>
+				</p>
 
-<p>
-  <strong>Hora fin:</strong>
-  <%= @turnos_fijo.hora_fin %>
-</p>
+				<p>
+					<strong>Dia semana:</strong>
+					<%= Date::DAYNAMES[@turnos_fijo.dia_semana] %>
+				</p>
 
-<p>
-  <strong>Dia semana:</strong>
-  <%= @turnos_fijo.dia_semana %>
-</p>
-
-<%= link_to 'Edit', edit_turnos_fijo_path(@turnos_fijo) %> |
-<%= link_to 'Back', turnos_fijos_path %>
+			</div>
+		</div>
+	</div>
+</div>

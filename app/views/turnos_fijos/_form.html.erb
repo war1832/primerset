@@ -1,37 +1,58 @@
-<%= form_for(@turnos_fijo) do |f| %>
-  <% if @turnos_fijo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@turnos_fijo.errors.count, "error") %> prohibited this turnos_fijo from being saved:</h2>
+<%= form_for @turnos_fijo , :html => { :class => "form-horizontal" } do |f| %>
 
-      <ul>
-      <% @turnos_fijo.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<% if @turnos_fijo.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@turnos_fijo.errors.count, "error") %> prohibited this turnos_fijo from being saved:</h2>
 
-  <div class="field">
-    <%= f.label :cliente_id %><br>
-    <%= f.text_field :cliente_id %>
-  </div>
-  <div class="field">
-    <%= f.label :cancha_id %><br>
-    <%= f.text_field :cancha_id %>
-  </div>
-  <div class="field">
-    <%= f.label :hora_inicio %><br>
-    <%= f.datetime_select :hora_inicio %>
-  </div>
-  <div class="field">
-    <%= f.label :hora_fin %><br>
-    <%= f.datetime_select :hora_fin %>
-  </div>
-  <div class="field">
-    <%= f.label :dia_semana %><br>
-    <%= f.number_field :dia_semana %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<ul>
+		<% @turnos_fijo.errors.full_messages.each do |message| %>
+		<li>
+			<%= message %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div class="form-group">
+	<%= f.label :cliente_id, class: "col-sm-2 control-label" %>
+	<div class="col-sm-4">
+		<%= f.collection_select :cliente_id, Cliente.all , :id, :nombre_y_apellido %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :cancha_id, class: "col-sm-2 control-label"  %>
+	<div class="col-sm-4">
+		<%= f.collection_select :cancha_id, Cancha.all, :id, :descripcion_con_tipo %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :hora_inicio, class: "col-sm-2 control-label"  %>
+	<div class="col-sm-4">
+		<%= f.datetime_select :hora_inicio %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :hora_fin, class: "col-sm-2 control-label"  %>
+	<div class="col-sm-4">
+		<%= f.datetime_select :hora_fin %>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= f.label :dia_semana, class: "col-sm-2 control-label"  %>
+	<div class="col-sm-4">
+		<select name="turnos_fijo[dia_semana]">
+			<% Date::DAYNAMES.each_with_index do |value, key| %>
+			<option value="<%= key %>"><%= value.capitalize %></option>
+			<% end %>
+		</select>
+
+	</div>
+</div>
+<div class="form-group">
+	<div class="col-sm-offset-2 col-sm-6">
+		<%= f.submit "Enviar", class: "btn btn-primary" %>
+	</div>
+</div>
 <% end %>
