@@ -75,6 +75,22 @@
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>
+				<li>
+					<a href="#"><i class="fa fa-calendar-plus-o fa-fw"></i> Turnos Fijos <span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li>
+							<%= link_to 'Listar Turnos Fijos', turnos_fijos_path %>
+						</li>
+						<li>
+							<%= link_to 'Agregar Nuevo Turno Fijo', new_turnos_fijo_path %>
+						</li>
+						<li>
+							<a href="#">Cancelacion de Turno Fijo</a>
+						</li>
+
+					</ul>
+					<!-- /.nav-second-level -->
+				</li>
 				<% if current_user.admin?  %>
 				<li>
 					<a href="#"><i class="fa fa-gear fa-fw"></i> Recursos <span class="fa arrow"></span></a>
