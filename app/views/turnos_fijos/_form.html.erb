@@ -1,0 +1,37 @@
+<%= form_for(@turnos_fijo) do |f| %>
+  <% if @turnos_fijo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@turnos_fijo.errors.count, "error") %> prohibited this turnos_fijo from being saved:</h2>
+
+      <ul>
+      <% @turnos_fijo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :cliente_id %><br>
+    <%= f.text_field :cliente_id %>
+  </div>
+  <div class="field">
+    <%= f.label :cancha_id %><br>
+    <%= f.text_field :cancha_id %>
+  </div>
+  <div class="field">
+    <%= f.label :hora_inicio %><br>
+    <%= f.datetime_select :hora_inicio %>
+  </div>
+  <div class="field">
+    <%= f.label :hora_fin %><br>
+    <%= f.datetime_select :hora_fin %>
+  </div>
+  <div class="field">
+    <%= f.label :dia_semana %><br>
+    <%= f.number_field :dia_semana %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

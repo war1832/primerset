@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
     
+  resources :turnos_fijos
   resources :reservas
   resources :canchas
   resources :tipo_canchas

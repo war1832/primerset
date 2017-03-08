@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cliente_id: 
+  cancha_id: 
+  hora_inicio: 2017-03-08 14:44:40
+  hora_fin: 2017-03-08 14:44:40
+  dia_semana: 1
+
+two:
+  cliente_id: 
+  cancha_id: 
+  hora_inicio: 2017-03-08 14:44:40
+  hora_fin: 2017-03-08 14:44:40
+  dia_semana: 1

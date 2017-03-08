@@ -1,0 +1,1 @@
+json.partial! "turnos_fijos/turnos_fijo", turnos_fijo: @turnos_fijo

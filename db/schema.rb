@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308151951) do
+ActiveRecord::Schema.define(version: 20170308175749) do
 
   create_table "canchas", force: :cascade do |t|
     t.string   "descripcion",   limit: 255
@@ -60,6 +60,20 @@ ActiveRecord::Schema.define(version: 20170308151951) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "turnos_fijos", force: :cascade do |t|
+    t.integer  "cliente_id",  limit: 4
+    t.integer  "cancha_id",   limit: 4
+    t.datetime "hora_inicio"
+    t.datetime "hora_fin"
+    t.integer  "dia_semana",  limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.datetime "fecha_baja"
+  end
+
+  add_index "turnos_fijos", ["cancha_id"], name: "index_turnos_fijos_on_cancha_id", using: :btree
+  add_index "turnos_fijos", ["cliente_id"], name: "index_turnos_fijos_on_cliente_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
     t.string   "encrypted_password",     limit: 255, default: "",    null: false
@@ -81,4 +95,6 @@ ActiveRecord::Schema.define(version: 20170308151951) do
 
   add_foreign_key "reservas", "canchas"
   add_foreign_key "reservas", "clientes"
+  add_foreign_key "turnos_fijos", "canchas"
+  add_foreign_key "turnos_fijos", "clientes"
 end

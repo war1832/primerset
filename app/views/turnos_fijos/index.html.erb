@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Turnos Fijos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Cancha</th>
+      <th>Hora inicio</th>
+      <th>Hora fin</th>
+      <th>Dia semana</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @turnos_fijos.each do |turnos_fijo| %>
+      <tr>
+        <td><%= turnos_fijo.cliente %></td>
+        <td><%= turnos_fijo.cancha %></td>
+        <td><%= turnos_fijo.hora_inicio %></td>
+        <td><%= turnos_fijo.hora_fin %></td>
+        <td><%= turnos_fijo.dia_semana %></td>
+        <td><%= link_to 'Show', turnos_fijo %></td>
+        <td><%= link_to 'Edit', edit_turnos_fijo_path(turnos_fijo) %></td>
+        <td><%= link_to 'Destroy', turnos_fijo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Turnos fijo', new_turnos_fijo_path %>

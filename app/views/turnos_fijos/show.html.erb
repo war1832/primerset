@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @turnos_fijo.cliente %>
+</p>
+
+<p>
+  <strong>Cancha:</strong>
+  <%= @turnos_fijo.cancha %>
+</p>
+
+<p>
+  <strong>Hora inicio:</strong>
+  <%= @turnos_fijo.hora_inicio %>
+</p>
+
+<p>
+  <strong>Hora fin:</strong>
+  <%= @turnos_fijo.hora_fin %>
+</p>
+
+<p>
+  <strong>Dia semana:</strong>
+  <%= @turnos_fijo.dia_semana %>
+</p>
+
+<%= link_to 'Edit', edit_turnos_fijo_path(@turnos_fijo) %> |
+<%= link_to 'Back', turnos_fijos_path %>

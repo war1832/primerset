@@ -1,0 +1,1 @@
+json.array! @turnos_fijos, partial: 'turnos_fijos/turnos_fijo', as: :turnos_fijo
