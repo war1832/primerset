@@ -29,7 +29,7 @@
 									<% @canchas.each do |cancha| %>
 									<tr>
 										<td><%= cancha.id %></td>
-										<td><%= cancha.name %></td>
+										<td><%= cancha.descripcion %></td>
 										<td><%= cancha.TipoCancha.descripcion %></td>
 										<td><%= link_to '<i class="fa fa-user fa-fw"></i> Mostrar'.html_safe, cancha %></td>
 										<td><%= link_to '<i class="fa fa-edit fa-fw"></i> Editar'.html_safe, edit_cancha_path(cancha) %></td>

@@ -71,7 +71,7 @@ class CanchasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cancha_params
-      params.require(:cancha).permit(:name, :TipoCancha_id)
+      params.require(:cancha).permit(:descripcion, :TipoCancha_id)
     end
     
     def verify_is_admin

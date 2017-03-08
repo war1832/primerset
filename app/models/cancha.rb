@@ -3,6 +3,6 @@ class Cancha < ActiveRecord::Base
   has_many :reservas
   
   def descripcion_con_tipo
-    "#{self.TipoCancha.descripcion} - #{name}"
+    "#{self.TipoCancha.descripcion} - #{descripcion}"
   end
 end
