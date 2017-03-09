@@ -27,7 +27,7 @@
 
 				<p>
 					<strong>Dia semana:</strong>
-					<%= Date::DAYNAMES[@turnos_fijo.dia_semana] %>
+					<%=Date::DAYS_INTO_WEEK.invert[@turnos_fijo.dia_semana].capitalize  %>
 				</p>
 
 			</div>

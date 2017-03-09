@@ -33,7 +33,7 @@
 										<td><%= "#{turnos_fijo.cancha.TipoCancha.descripcion} - #{turnos_fijo.cancha.descripcion}" %></td>
 										<td><%= turnos_fijo.hora_inicio.strftime "%H:%M" %></td>
 										<td><%= turnos_fijo.hora_fin.strftime "%H:%M" %></td>
-										<td><%= Date::DAYNAMES[turnos_fijo.dia_semana] %></td>
+										<td><%= Date::DAYS_INTO_WEEK.invert[turnos_fijo.dia_semana].capitalize %></td>
 										<td><%= link_to 'Show', turnos_fijo %></td>
 										<td><%= link_to 'Edit', edit_turnos_fijo_path(turnos_fijo) %></td>
 										<td><%= link_to 'Destroy', turnos_fijo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
