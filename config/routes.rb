@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
     
+  get 'auditoria/accesos'
+
   resources :turnos_fijos
   resources :reservas
   resources :canchas
