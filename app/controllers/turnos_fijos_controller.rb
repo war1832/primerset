@@ -1,11 +1,10 @@
 class TurnosFijosController < ApplicationController
   before_action :set_turnos_fijo, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
-    
   # GET /turnos_fijos
   # GET /turnos_fijos.json
   def index
-    @turnos_fijos = TurnosFijo.all
+    @turnos_fijos = TurnosFijo.where fecha_baja: nil
   end
 
   # GET /turnos_fijos/1
@@ -55,21 +54,27 @@ class TurnosFijosController < ApplicationController
   # DELETE /turnos_fijos/1
   # DELETE /turnos_fijos/1.json
   def destroy
-    @turnos_fijo.destroy
-    respond_to do |format|
-      format.html { redirect_to turnos_fijos_url, notice: 'Turnos fijo was successfully destroyed.' }
-      format.json { head :no_content }
+    @turnos_fijo.fecha_baja = DateTime.now
+    if @turnos_fijo.save
+      respond_to do |format|
+        format.html { redirect_to @turnos_fijo, notice: 'El turno fijo se dio de baja correctamente.' }
+        format.json { head :no_content }
+      end
+    else    
+       format.html { render :edit }
+       format.json { render json: @turnos_fijo.errors, status: :unprocessable_entity }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_turnos_fijo
-      @turnos_fijo = TurnosFijo.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def turnos_fijo_params
-      params.require(:turnos_fijo).permit(:cliente_id, :cancha_id, :hora_inicio, :hora_fin, :dia_semana)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_turnos_fijo
+    @turnos_fijo = TurnosFijo.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def turnos_fijo_params
+    params.require(:turnos_fijo).permit(:cliente_id, :cancha_id, :hora_inicio, :hora_fin, :dia_semana)
+  end
 end

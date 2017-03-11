@@ -1,7 +1,8 @@
 class TurnosFijo < ActiveRecord::Base
   belongs_to :cliente
   belongs_to :cancha
-  
+  has_many :cancelaciones_turno
+    
   validates_presence_of :hora_inicio
   validates_presence_of :hora_fin
   

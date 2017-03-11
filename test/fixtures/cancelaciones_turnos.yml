@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  turnos_fijo_id: 
+  fecha_baja: 2017-03-11 18:50:24
+  dia_cancelacion: 2017-03-11 18:50:24
+
+two:
+  turnos_fijo_id: 
+  fecha_baja: 2017-03-11 18:50:24
+  dia_cancelacion: 2017-03-11 18:50:24
