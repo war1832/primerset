@@ -1,0 +1,33 @@
+<%= form_for @cancelacion, :html => { :class => "form-horizontal" } do |f| %>
+<% if @cancelacion.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@cancelacion.errors.count, "error") %> prohibited this tipo_cliente from being saved:</h2>
+
+	<ul>
+		<% @tipo_cliente.errors.full_messages.each do |message| %>
+		<li>
+			<%= message %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div class="form-group">
+	<%= f.label :turnos_fijo_id, class: "col-sm-2 control-label" %>
+	<div class="col-sm-4">
+		<%= f.collection_select :turnos_fijo_id, TurnosFijo.where(fecha_baja: nil) , :id, :descripcion %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :dia_cancelacion, class: "col-sm-2 control-label" %>
+	<div class="col-sm-4">
+		<%= f.date_select :dia_cancelacion , class: "form-control" %>
+	</div>
+</div>
+<div class="form-group">
+	<div class="col-sm-offset-2 col-sm-6">
+		<%= f.submit "Enviar", class: "btn btn-primary" %>
+	</div>
+</div>
+<% end %>

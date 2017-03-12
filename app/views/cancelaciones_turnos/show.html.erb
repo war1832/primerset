@@ -1,0 +1,39 @@
+<%= render "partials/navigation" %> <!-- Page Content -->
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1>Detalle de la cancelacion.</h1>
+				<hr />
+				<p>
+					<strong>Cliente:</strong>
+					<%= @cancelacion.turnos_fijo.cliente.nombre_y_apellido %>
+				</p>
+
+				<p>
+					<strong>Cancha:</strong>
+					<%= "#{@cancelacion.turnos_fijo.cancha.TipoCancha.descripcion} - #{@cancelacion.turnos_fijo.cancha.descripcion}"  %>
+				</p>
+
+				<p>
+					<strong>Hora inicio:</strong>
+					<%= @cancelacion.turnos_fijo.cliente.nombre_y_apellido %>
+				</p>
+
+				<p>
+					<strong>Horario</strong>
+					<%= "#{@cancelacion.turnos_fijo.hora_inicio.strftime('%H:%M')} - #{@cancelacion.turnos_fijo.hora_fin.strftime('%H:%M')}" %>
+				</p>
+
+				<p>
+					<strong>Dia semana:</strong>
+					<%= Date::DAYS_INTO_WEEK.invert[@cancelacion.turnos_fijo.dia_semana].capitalize %>
+				</p>
+				<p>
+					<strong>Dia Cancelacion:</strong>
+					<%= @cancelacion.dia_cancelacion.strftime('%d/%m/%Y') %>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>

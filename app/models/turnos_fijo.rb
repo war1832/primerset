@@ -9,6 +9,10 @@ class TurnosFijo < ActiveRecord::Base
   validate :validar_turno_fijo
   validate :validar_horario
   
+  def descripcion
+      "Dia: #{Date::DAYS_INTO_WEEK.invert[dia_semana].capitalize} - #{self.cliente.nombre_y_apellido} - #{self.cancha.descripcion}  "
+  end
+  
   def validar_turno_fijo
       if verificar_disponibilidad_turnos_fijos && verificar_disponibilidad_reservas
         errors.add(:disponibilidad, "Ya existe un Turno en ese horario, verifique los datos de la reserva.")
