@@ -25,9 +25,9 @@ class TurnosFijosController < ApplicationController
   # POST /turnos_fijos.json
   def create
     @turnos_fijo = TurnosFijo.new(turnos_fijo_params)
-
     respond_to do |format|
       if @turnos_fijo.save
+         Auditorium.GenerarAuditoria("Alta Turno Fijo", current_user.email, nil, @turnos_fijo)
         format.html { redirect_to @turnos_fijo, notice: 'Turnos fijo was successfully created.' }
         format.json { render :show, status: :created, location: @turnos_fijo }
       else
@@ -40,8 +40,10 @@ class TurnosFijosController < ApplicationController
   # PATCH/PUT /turnos_fijos/1
   # PATCH/PUT /turnos_fijos/1.json
   def update
+    turno_fijo_viejo = @turnos_fijo.dup
     respond_to do |format|
       if @turnos_fijo.update(turnos_fijo_params)
+        Auditorium.GenerarAuditoria("Modifiacion Turno Fijo", current_user.email, turno_fijo_viejo, @turnos_fijo)
         format.html { redirect_to @turnos_fijo, notice: 'Turnos fijo was successfully updated.' }
         format.json { render :show, status: :ok, location: @turnos_fijo }
       else
@@ -56,6 +58,7 @@ class TurnosFijosController < ApplicationController
   def destroy
     @turnos_fijo.fecha_baja = DateTime.now
     if @turnos_fijo.save
+      Auditorium.GenerarAuditoria("Baja Turno Fijo", current_user.email, @turnos_fijo, nil)
       respond_to do |format|
         format.html { redirect_to @turnos_fijo, notice: 'El turno fijo se dio de baja correctamente.' }
         format.json { head :no_content }

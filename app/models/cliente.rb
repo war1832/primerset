@@ -1,6 +1,6 @@
 class Cliente < ActiveRecord::Base
     belongs_to :tipo_cliente
-    has_many :Reservas
+    has_many :Reservas, dependent: :destroy
     
     validates :nombre, presence: true
     validates :apellido, presence: true

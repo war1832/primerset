@@ -27,6 +27,7 @@ class ClientesController < ApplicationController
     @cliente = Cliente.new(cliente_params)
     respond_to do |format|
       if @cliente.save
+         Auditorium.GenerarAuditoria("Alta Cliente", current_user.email, nil, @cliente)
         format.html { redirect_to @cliente, notice: 'Cliente was successfully created.' }
         format.json { render :show, status: :created, location: @cliente }
       else
@@ -39,9 +40,10 @@ class ClientesController < ApplicationController
   # PATCH/PUT /clientes/1
   # PATCH/PUT /clientes/1.json
   def update
-    
+    cliente_viejo =  @cliente.dup
     respond_to do |format|
       if @cliente.update(cliente_params)
+         Auditorium.GenerarAuditoria("Modifiacion de Cliente", current_user.email, cliente_viejo, @cliente)
         format.html { redirect_to @cliente, notice: 'Cliente was successfully updated.' }
         format.json { render :show, status: :ok, location: @cliente }
       else
@@ -56,6 +58,7 @@ class ClientesController < ApplicationController
   def destroy
     @cliente.destroy
     respond_to do |format|
+      Auditorium.GenerarAuditoria("Baja de Cliente", current_user.email, @cliente, nil)
       format.html { redirect_to clientes_url, notice: 'Cliente was successfully destroyed.' }
       format.json { head :no_content }
     end

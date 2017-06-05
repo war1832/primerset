@@ -42,7 +42,7 @@ class ReservasController < ApplicationController
   # PATCH/PUT /reservas/1
   # PATCH/PUT /reservas/1.json
   def update
-    reserva_vieja = @reserva
+    reserva_vieja = @reserva.dup
     respond_to do |format|
       if @reserva.update(reserva_params)
          Auditorium.GenerarAuditoria("Modificacion Reserva", current_user.email, reserva_vieja, @reserva)
