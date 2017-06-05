@@ -27,9 +27,9 @@ class ReservasController < ApplicationController
   # POST /reservas.json
   def create
     @reserva = Reserva.new(reserva_params)
-
     respond_to do |format|
       if @reserva.save
+         Auditorium.GenerarAuditoria("Alta Reserva", current_user.email, nil, @reserva)
         format.html { redirect_to @reserva, notice: 'Reserva was successfully created.' }
         format.json { render :show, status: :created, location: @reserva }
       else
@@ -42,8 +42,10 @@ class ReservasController < ApplicationController
   # PATCH/PUT /reservas/1
   # PATCH/PUT /reservas/1.json
   def update
+    reserva_vieja = @reserva
     respond_to do |format|
       if @reserva.update(reserva_params)
+         Auditorium.GenerarAuditoria("Modificacion Reserva", current_user.email, reserva_vieja, @reserva)
         format.html { redirect_to @reserva, notice: 'Reserva was successfully updated.' }
         format.json { render :show, status: :ok, location: @reserva }
       else
@@ -59,6 +61,7 @@ class ReservasController < ApplicationController
     @reserva.fecha_baja = DateTime.now
     if @reserva.save
       respond_to do |format|
+        Auditorium.GenerarAuditoria("Baja Reserva", current_user.email, @reserva, nil)
         format.html { redirect_to @reserva, notice: 'La reserva se dio de baja correctamente.' }
         format.json { head :no_content }
       end

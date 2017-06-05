@@ -46,4 +46,8 @@ class TurnosFijo < ActiveRecord::Base
   def validar_horario
     errors.add(:horario_incorrecto, "Verifique los horarios.") if hora_inicio.strftime("%H:%M") > hora_fin.strftime("%H:%M")
   end
+
+  def as_json(options={})
+    super(options).reject { |k, v| v.nil? }
+  end
 end

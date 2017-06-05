@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  usuario: MyString
+  accion: MyString
+  valor_viejo: MyText
+  valor_nuevo: MyText
+
+two:
+  usuario: MyString
+  accion: MyString
+  valor_viejo: MyText
+  valor_nuevo: MyText

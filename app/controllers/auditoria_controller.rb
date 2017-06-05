@@ -6,6 +6,10 @@ class AuditoriaController < ApplicationController
     @usuarios = User.all
   end
 
+  def modificaciones
+    @auditoria = Auditorium.all
+  end
+
   def verify_is_admin
     unless current_user && current_user.admin?
       redirect_to :controller => 'welcome', :action => 'index'

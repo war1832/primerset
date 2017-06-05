@@ -8,8 +8,11 @@ class Cliente < ActiveRecord::Base
     
     validates_format_of :email,:with => Devise::email_regexp
     
-    
     def nombre_y_apellido
       "#{apellido}, #{nombre}"
+    end
+
+    def as_json(options={})
+      super(options).reject { |k, v| v.nil? }
     end
 end

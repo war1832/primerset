@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'auditoria/accesos'   
+  get 'auditoria/accesos'
+  get 'auditoria/modificaciones'   
   
   resources :cancelaciones_turnos
   resources :turnos_fijos

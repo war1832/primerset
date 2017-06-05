@@ -41,4 +41,8 @@ class Reserva < ActiveRecord::Base
     end 
   end
   
+  def as_json(options={})
+    super(options).reject { |k, v| v.nil? }
+  end
+
 end

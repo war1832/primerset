@@ -3,4 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
   
+  def as_json(options={})
+    super(options).reject { |k, v| v.nil? }
+  end
+  
 end
