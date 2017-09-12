@@ -1,0 +1,11 @@
+Hola, <%= @reserva.cliente.nombre %>: 
+
+Le enviamos la información del turno solicitado.
+
+Solicitante: <%= @reserva.cliente.nombre_y_apellido %>
+Inicio del Turno: <%= @reserva.fecha_inicio %>
+Finalizacion del turno: <%= @reserva.fecha_fin %>
+Cancha: <%= @reserva.cancha.descripcion_con_tipo %>
+
+
+Saludos cordiales, Club Primer Set.

@@ -29,6 +29,7 @@ class ReservasController < ApplicationController
     @reserva = Reserva.new(reserva_params)
     respond_to do |format|
       if @reserva.save
+         ClienteMailer.recordatorio_reserva(@reserva).deliver_later
          Auditorium.GenerarAuditoria("Alta Reserva", current_user.email, nil, @reserva)
         format.html { redirect_to @reserva, notice: 'Reserva was successfully created.' }
         format.json { render :show, status: :created, location: @reserva }
