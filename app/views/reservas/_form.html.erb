@@ -22,19 +22,23 @@
 <div class="form-group">
 	<%= f.label :cancha_id, class: "col-sm-2 control-label"  %>
 	<div class="col-sm-4">
-		<%= f.collection_select :cancha_id, Cancha.all, :id, :descripcion_con_tipo %>
+		<%= f.collection_select :cancha_id, Cancha.all, :id, :descripcion_con_tipo, {  order: [ :day ,:month, :year ] , :datetime_separator => '', :time_separator => ''  },  { include_blank: false, class: "form-control" } %>
 	</div>
 </div>
 <div class="form-group">
 	<%= f.label :fecha_inicio, class: "col-sm-2 control-label"  %>
 	<div class="col-sm-4">
-		<%= f.datetime_select :fecha_inicio %>
+		<span class="datetime">
+			<%= f.datetime_select :fecha_inicio, { :use_month_names => ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre'], order: [ :day ,:month, :year ] , :datetime_separator => '', :time_separator => '' }, { class: "form-control"} %>
+		</span>
 	</div>
 </div>
 <div class="form-group">
 	<%= f.label :fecha_fin, class: "col-sm-2 control-label"  %>
 	<div class="col-sm-4">
-		<%= f.datetime_select :fecha_fin %>
+		<span class="datetime">
+			<%= f.datetime_select :fecha_fin, {:use_month_names => ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre'], order: [ :day ,:month, :year ], :datetime_separator => '', :time_separator => ''}, { class: "form-control"} %>
+		</span>
 	</div>
 </div>
 <div class="form-group">

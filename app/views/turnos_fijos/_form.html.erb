@@ -23,26 +23,30 @@
 <div class="form-group">
 	<%= f.label :cancha_id, class: "col-sm-2 control-label"  %>
 	<div class="col-sm-4">
-		<%= f.collection_select :cancha_id, Cancha.all, :id, :descripcion_con_tipo %>
+		<%= f.collection_select :cancha_id, Cancha.all, :id, :descripcion_con_tipo, {} , { class: 'form-control'} %>
 	</div>
 </div>
 <div class="form-group">
 	<%= f.label :hora_inicio, class: "col-sm-2 control-label"  %>
 	<div class="col-sm-4">
-		<%= f.time_select :hora_inicio %>
+		<span style="display:inline-flex;">
+			<%= f.time_select :hora_inicio , {time_separator: ''}, { class: 'form-control time'} %>
+		</span>
 	</div>
 </div>
 <div class="form-group">
 	<%= f.label :hora_fin, class: "col-sm-2 control-label"  %>
 	<div class="col-sm-4">
-		<%= f.time_select :hora_fin %>
+		<span style="display:inline-flex;">
+			<%= f.time_select :hora_fin , {time_separator: ''}, { class: 'form-control time'} %>
+		</span>
 	</div>
 </div>
 
 <div class="form-group">
 	<%= f.label :dia_semana, class: "col-sm-2 control-label"  %>
 	<div class="col-sm-4">
-		<select name="turnos_fijo[dia_semana]">
+		<select name="turnos_fijo[dia_semana]" class="form-control">
 			<% Date::DAYS_INTO_WEEK.each do |key, value | %>
 			<option value="<%= value %>"><%= key.capitalize %></option>
 			<% end %>

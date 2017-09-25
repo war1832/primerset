@@ -1,0 +1,31 @@
+.select2-container--bootstrap{
+    width: 100% !important;
+}
+
+.datetime select{
+    margin: 2px 4px;
+}
+
+.datetime{
+    display: flex;
+}
+
+.datetime select:nth-child(1) {
+  width: 70px;
+}
+
+.datetime select:nth-child(2) {
+  width: 130px;
+}
+
+.datetime select:nth-child(3) {
+  width: 130px;
+}
+
+.datetime select:nth-child(4) {
+  width: 70px;
+}
+
+.datetime select:nth-child(5) {
+  width: 70px;
+}
