@@ -17,6 +17,7 @@
 //= require select2
 //= require select2_locale_es
 //= require_tree .
+//= require Chart.min
 
 $(document).on('turbolinks:load', function() {
     $('#side-menu').metisMenu();

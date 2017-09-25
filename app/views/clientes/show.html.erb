@@ -2,32 +2,104 @@
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-lg-12">
-				<h1>Detalle del Cliente</h1>
-				<hr />
-				<p>
-					<strong>Nombre:</strong>
-					<%= @cliente.nombre %>
-				</p>
+<div class="col-md-10 col-md-offset-1">
 
-				<p>
-					<strong>Apellido:</strong>
-					<%= @cliente.apellido %>
-				</p>
+				<div class="row">
+					<h1> Perfil de Usuario </h1>
+					<hr />
+					<div class="col-sm-6 col-md-3">
 
-				<p>
-					<strong>Direccion:</strong>
-					<%= @cliente.direccion %>
-				</p>
+						<%= image_tag "avatar.png", :class => "img-circle img-responsive center-block" %>
+						<h3 class="text-primary text-center">
+							<%= @cliente.nombre.capitalize %> <%= @cliente.apellido.capitalize %>
+						</h3>
+						<hr>
+						<h4 class="text-center text-success">Estadisticas de reservas</h4>
 
-				<p>
-					<strong>Telefono:</strong>
-					<%= @cliente.telefono %>
-				</p>
-				<p>
-					<strong>Tipo Cliente:</strong>
-					<%= @cliente.tipo_cliente.descripcion %>
-				</p>
+						<canvas id="estadisticas-cliente" width="400" height="400"></canvas>
+
+					</div>
+					<div class="col-sm-8 col-md-9">
+						<div class="row">
+							<div class="col-xs-12">
+						<h3>Profile</h3>
+						<table class="table table-hover table-striped">
+							<tbody>
+								<tr>
+									<td><strong>Nombre</strong></td>
+									<td><%= @cliente.nombre.capitalize =%></td>
+								</tr>
+								<tr>
+									<td><strong>Apellido</strong></td>
+									<td><%= @cliente.apellido.capitalize %></td>
+								</tr>
+								<tr>
+									<td><strong>Telefono</strong></td>
+									<td><%= @cliente.telefono%></td>
+								</tr>
+								<tr>
+									<td><strong>Direccion</strong></td>
+									<td><%= @cliente.direccion %></td>
+								</tr>
+								<tr>
+									<td><strong>Tipo de Cliente</strong></td>
+									<td><%=@cliente.tipo_cliente.descripcion %></td>
+								</tr>
+							</tbody>
+						</table>
+						<hr>
+						<h3>Ultimos Turnos</h3>
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Fecha</th>
+									<th>Hora Inicio</th>
+									<th>Hora Fin</th>
+									<th>Cancha</th>
+								</tr>
+								</thead>
+							<tbody>
+								<% @cliente.Reservas.take(5).each do |turno| %>
+								<tr>
+									<td><%= turno.fecha_inicio.to_date %></td>
+									<td><%= turno.fecha_inicio.strftime("%H:%M") %></td>
+									<td><%= turno.fecha_fin.strftime("%H:%M") %></td>
+									<td><%= "#{turno.cancha.TipoCancha.descripcion} - #{turno.cancha.descripcion}" %></td>
+								</tr>
+								<%end%>
+							</tbody>
+						</table>
+						</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+</div>
+
+<script>
+var ctx = document.getElementById("estadisticas-cliente").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ["Total de Reservas", "Total de Cancelaciones"],
+        datasets: [{
+            label: '',
+            data: [ <%= @cliente.Reservas.count %> , <%= @cancelaciones %> ],
+			backgroundColor: [
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(255, 99, 132, 0.2)'
+
+            ],
+			borderColor: [
+                'rgba(54, 162, 235, 1)',
+                'rgba(255,99,132,1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+    }
+});
+</script>

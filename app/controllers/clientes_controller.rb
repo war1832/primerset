@@ -10,6 +10,7 @@ class ClientesController < ApplicationController
   # GET /clientes/1
   # GET /clientes/1.json
   def show
+    @cancelaciones = rand(1..4)
   end
 
   # GET /clientes/new
