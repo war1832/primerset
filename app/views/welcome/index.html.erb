@@ -1,21 +1,73 @@
 <%= render "partials/navigation" %>
 
-<!-- Page Content -->
-<div id="page-wrapper">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">Welcome#Index</h1>
-				<p>
-					Find me in app/views/welcome/Index.html.erb
-				</p>
-				<hr>
-				<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+	<!-- Page Content -->
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12">
+					<h1 class="page-header">Tablero</h1>
+
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Primer Set</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-sm-12">
+									<h4>Hola, bienvenido
+										<%= current_user.email %> !
+											<h4>
+												<hr>
+												<h2 class="text-center text-danger" style="margin-bottom: 1em;">Accesos rapidos</h2>
+												
+												<div class="row">
+													<div class="col-sm-3">
+														<div class="well text-center">
+															<i class="fa fa-user fa-4x"></i>
+															<hr>
+															<p>
+																<%= link_to 'Nuevo Cliente', new_cliente_path %>
+															</p>
+														</div>
+													</div>
+													<div class="col-sm-3">
+														<div class="well text-center">
+															<i class="fa fa-calendar fa-4x"></i>															
+															<hr>
+															<p>
+																<a href="#">Reservas del Dia</a>
+															</p>
+														</div>
+													</div>
+													<div class="col-sm-3">
+														<div class="well text-center">
+															<i class="fa fa-calendar-plus-o fa-4x"></i>
+															<hr>
+															<p>
+																<%= link_to 'Alta de Reservas', new_reserva_path %>
+															</p>
+														</div>
+													</div>
+													<div class="col-sm-3">
+														<div class="well text-center">
+															<i class="fa fa-eye fa-4x"></i>	
+															<hr>
+															<p>
+																<%= link_to 'Modificaciones de Reservas', auditoria_modificaciones_path %>															
+															</p>
+														</div>
+													</div>
+												</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- /.col-lg-12 -->
 			</div>
-			<!-- /.col-lg-12 -->
+			<!-- /.row -->
 		</div>
-		<!-- /.row -->
+		<!-- /.container-fluid -->
 	</div>
-	<!-- /.container-fluid -->
-</div>
-<!-- /#page-wrapper -->
+	<!-- /#page-wrapper -->
