@@ -59,7 +59,7 @@
 								</tr>
 								</thead>
 							<tbody>
-								<% @cliente.Reservas.take(5).each do |turno| %>
+								<% @ultimas_reservas.each do |turno| %>
 								<tr>
 									<td><%= turno.fecha_inicio.to_date %></td>
 									<td><%= turno.fecha_inicio.strftime("%H:%M") %></td>
@@ -86,7 +86,7 @@ var myChart = new Chart(ctx, {
         labels: ["Total de Reservas", "Total de Cancelaciones"],
         datasets: [{
             label: '',
-            data: [ <%= @cliente.Reservas.count %> , <%= @cancelaciones %> ],
+            data: [ <%= @reservas %> , <%= @cancelaciones %> ],
 			backgroundColor: [
 				'rgba(54, 162, 235, 0.2)',
 				'rgba(255, 99, 132, 0.2)'

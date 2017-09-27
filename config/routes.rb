@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get 'auditoria/accesos'
   get 'auditoria/modificaciones'   
   
+  match 'agenda' => 'reservas#agenda', :via => :get
+  match 'agenda/:date' => 'reservas#agenda', :via => :post
+  
   resources :cancelaciones_turnos
   resources :turnos_fijos
   resources :reservas

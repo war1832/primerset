@@ -10,7 +10,9 @@ class ClientesController < ApplicationController
   # GET /clientes/1
   # GET /clientes/1.json
   def show
-    @cancelaciones = rand(1..4)
+    @ultimas_reservas =  @cliente.Reservas.where(fecha_baja: nil).take(5)
+    @reservas = @cliente.Reservas.count
+    @cancelaciones = @cliente.Reservas.where("fecha_baja IS NOT NULL").count
   end
 
   # GET /clientes/new

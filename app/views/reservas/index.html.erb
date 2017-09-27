@@ -21,15 +21,15 @@
 										<th>Cancha</th>
 										<th>Fecha inicio</th>
 										<th>Fecha fin</th>
-										<th colspan="3" class="text-center"">Acciones</th>
+										<th colspan="3" class="text-center">Acciones</th>
 										</tr>
 										</thead>
 
 										<tbody>
 										<% @reservas.each do |reserva| %>
 										<tr>
-										<td><%= "#{reserva.cliente.nombre}, #{reserva.cliente.apellido} " %></td>
-										<td><%= "#{reserva.cancha.TipoCancha.descripcion} - #{reserva.cancha.descripcion}" %></td>
+										<td><%= reserva.cliente.nombre_y_apellido %></td>
+										<td><%= reserva.cancha.descripcion_con_tipo %></td>
 										<td><%= reserva.fecha_inicio %></td>
 										<td><%= reserva.fecha_fin %></td>
 										<td><%= link_to '<i class="fa fa-user fa-fw"></i> Mostrar'.html_safe, reserva %></td>
@@ -67,8 +67,8 @@
 								<tbody>
 									<% @cancelaciones.each do |reserva| %>
 									<tr>
-										<td><%= "#{reserva.cliente.nombre}, #{reserva.cliente.apellido} " %></td>
-										<td><%= "#{reserva.cancha.TipoCancha.descripcion} - #{reserva.cancha.descripcion}" %></td>
+										<td><%= reserva.cliente.nombre_y_apellido %></td>
+										<td><%= reserva.cancha.descripcion_con_tipo %></td>
 										<td><%= reserva.fecha_inicio %></td>
 										<td><%= reserva.fecha_fin %></td>
 										<td><%= reserva.fecha_baja %></td>

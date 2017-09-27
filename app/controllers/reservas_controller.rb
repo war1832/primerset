@@ -2,6 +2,11 @@ class ReservasController < ApplicationController
   before_action :set_reserva, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
+  def agenda
+    @reservas = Reserva.where("DATE(fecha_inicio) = ? AND fecha_baja IS NULL", Date.today).order(:fecha_inicio)
+    @turnos_fijos = TurnosFijo.where("fecha_baja IS NULL AND dia_semana = ?", (Date.today.wday-1)).order(:hora_inicio)
+  end
+
   # GET /reservas
   # GET /reservas.json
   def index
@@ -81,5 +86,9 @@ class ReservasController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def reserva_params
       params.require(:reserva).permit(:cliente_id, :cancha_id, :fecha_inicio, :fecha_fin, :fecha_baja)
+    end
+
+    def agenda_params
+       params.require(:reserva).permit(:date)
     end
 end
