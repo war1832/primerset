@@ -5,14 +5,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Agenda del dia</h1>
+                    <h1>Agenda del dia: <%=@date.strftime("%d/%m/%Y") %></h1>
 
                     <hr />
 
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">Turnos Dados para el dia
-                                <%= Date.today.strftime("%d/%m/%Y") %>
+                                <%= @date.strftime("%d/%m/%Y") %>
                             </h3>
                         </div>
                         <div class="panel-body">

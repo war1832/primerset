@@ -21,6 +21,9 @@
 				<li>
 					<%= link_to '<i class="fa fa-gear fa-fw"></i> Editar'.html_safe, edit_user_admin_path(:id => current_user.id) %>
 				</li>
+				<li>
+					<%= link_to '<i class="fa fa-support fa-fw"></i> Ayuda'.html_safe, image_path("ayuda.pdf") %>
+				</li>
 				<li class="divider"></li>
 				<li>
 					<%= link_to '<i class="fa fa-sign-out fa-fw"></i> Salir'.html_safe , destroy_user_session_path, method: :delete %>
@@ -57,6 +60,20 @@
 							<%= link_to 'Listar Tipos de Cliente', tipo_clientes_path %>
 						</li>
 						<% end %>
+					</ul>
+					<!-- /.nav-second-level -->
+				</li>
+
+				<li>
+					<a href="#"><i class="fa fa-calendar fa-fw"></i> Agenda <span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li>
+							<%= link_to 'Agenda de Reservas del dia', agenda_path %>
+						</li>
+						<li>
+							<%= link_to 'Consultar Agenda', consulta_path %>
+						</li>
+
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>
