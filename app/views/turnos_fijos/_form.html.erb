@@ -47,9 +47,13 @@
 	<%= f.label :dia_semana, class: "col-sm-2 control-label"  %>
 	<div class="col-sm-4">
 		<select name="turnos_fijo[dia_semana]" class="form-control">
-			<% Date::DAYS_INTO_WEEK.each do |key, value | %>
-			<option value="<%= value %>"><%= key.capitalize %></option>
-			<% end %>
+						<option value="0">Lunes</option>
+						<option value="1">Martes</option>
+						<option value="2">Miercoles</option>
+						<option value="3">Jueves</option>
+						<option value="4">Viernes</option>
+						<option value="5">Sabado</option>
+						<option value="6">Domingo</option>
 		</select>
 
 	</div>

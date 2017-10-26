@@ -1,9 +1,20 @@
 class TurnosFijosController < ApplicationController
   before_action :set_turnos_fijo, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
+  skip_before_action :verify_authenticity_token
+
+  def cancelacion
+    @turnos_fijos = TurnosFijo.where fecha_baja: nil
+  end
+
+  def cancelar
+    #TODO: Implementar
+  end
+
   # GET /turnos_fijos
   # GET /turnos_fijos.json
   def index
+    @dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"]
     @turnos_fijos = TurnosFijo.where fecha_baja: nil
   end
 

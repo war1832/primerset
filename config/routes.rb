@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   get 'auditoria/accesos'
-  get 'auditoria/modificaciones'   
+  get 'auditoria/modificaciones'
+  match 'consultaauditoria' => 'auditoria#consulta',:via => :post   
   
   match 'agenda' => 'reservas#agenda', date: Date.today, :via => :get
   match 'consulta' => 'reservas#consulta', :via => :get
@@ -9,10 +10,13 @@ Rails.application.routes.draw do
   
   resources :cancelaciones_turnos
   resources :turnos_fijos
+  match 'cancelacion' => 'turnos_fijos#cancelacion', :via => :get
+  match 'cancelarturnofijo' => 'turnos_fijos#cancelar', :via => :post
   resources :reservas
   resources :canchas
   resources :tipo_canchas
   resources :clientes
+  match 'consultacliente' => 'clientes#consulta',:via => :post   
   resources :tipo_clientes
   resources :user_admin
   

@@ -1,5 +1,6 @@
 class ClientesController < ApplicationController
   before_action :set_cliente, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
   before_filter :authenticate_user!
   # GET /clientes
   # GET /clientes.json
@@ -10,9 +11,22 @@ class ClientesController < ApplicationController
   # GET /clientes/1
   # GET /clientes/1.json
   def show
-    @ultimas_reservas =  @cliente.Reservas.where(fecha_baja: nil).take(5)
+    @ultimas_reservas =  @cliente.Reservas.where(fecha_baja: nil).last(5)
     @reservas = @cliente.Reservas.count
     @cancelaciones = @cliente.Reservas.where("fecha_baja IS NOT NULL").count
+  end
+
+  def consulta
+     filtro = date = params[:filter]
+
+     @clientes = [];
+
+     unless filtro.empty?
+      @clientes += Cliente.where("nombre LIKE ? OR apellido LIKE ?", filtro, filtro)
+     else
+      redirect_to :controller => 'clientes', :action => 'index'
+    end
+
   end
 
   # GET /clientes/new
