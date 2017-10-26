@@ -3,14 +3,6 @@ class TurnosFijosController < ApplicationController
   before_filter :authenticate_user!
   skip_before_action :verify_authenticity_token
 
-  def cancelacion
-    @turnos_fijos = TurnosFijo.where fecha_baja: nil
-  end
-
-  def cancelar
-    #TODO: Implementar
-  end
-
   # GET /turnos_fijos
   # GET /turnos_fijos.json
   def index

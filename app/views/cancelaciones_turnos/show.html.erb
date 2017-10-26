@@ -27,7 +27,7 @@
 
 				<p>
 					<strong>Dia semana:</strong>
-					<%= Date::DAYS_INTO_WEEK.invert[@cancelacion.turnos_fijo.dia_semana].capitalize %>
+					<%= @cancelacion.turnos_fijo.dia_con_descripcion %>
 				</p>
 				<p>
 					<strong>Dia Cancelacion:</strong>

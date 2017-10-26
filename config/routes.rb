@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   
   resources :cancelaciones_turnos
   resources :turnos_fijos
-  match 'cancelacion' => 'turnos_fijos#cancelacion', :via => :get
-  match 'cancelarturnofijo' => 'turnos_fijos#cancelar', :via => :post
   resources :reservas
   resources :canchas
   resources :tipo_canchas

@@ -14,6 +14,10 @@ class TurnosFijo < ActiveRecord::Base
   def descripcion
       "Dia: #{@@dias[dia_semana]} - #{self.cliente.nombre_y_apellido} - #{self.cancha.descripcion}  "
   end
+
+  def dia_con_descripcion
+      @@dias[dia_semana]
+  end
   
   def validar_turno_fijo
       if verificar_disponibilidad_turnos_fijos && verificar_disponibilidad_reservas
