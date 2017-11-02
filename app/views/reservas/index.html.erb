@@ -30,8 +30,8 @@
 										<tr>
 										<td><%= reserva.cliente.nombre_y_apellido %></td>
 										<td><%= reserva.cancha.descripcion_con_tipo %></td>
-										<td><%= reserva.fecha_inicio %></td>
-										<td><%= reserva.fecha_fin %></td>
+										<td><%= reserva.fecha_inicio.strftime("%d/%m/%Y - %H:%M") %></td>
+										<td><%= reserva.fecha_fin.strftime("%d/%m/%Y - %H:%M") %></td>
 										<td><%= link_to '<i class="fa fa-user fa-fw"></i> Mostrar'.html_safe, reserva %></td>
 										<td><%= link_to '<i class="fa fa-edit fa-fw"></i> Editar'.html_safe, edit_reserva_path(reserva) %></td>
 										<td><%= link_to '<i class="fa fa-remove fa-fw"></i> Eliminar'.html_safe, reserva, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -69,9 +69,9 @@
 									<tr>
 										<td><%= reserva.cliente.nombre_y_apellido %></td>
 										<td><%= reserva.cancha.descripcion_con_tipo %></td>
-										<td><%= reserva.fecha_inicio %></td>
-										<td><%= reserva.fecha_fin %></td>
-										<td><%= reserva.fecha_baja %></td>
+										<td><%= reserva.fecha_inicio.strftime("%d/%m/%Y - %H:%M")  %></td>
+										<td><%= reserva.fecha_fin.strftime("%d/%m/%Y - %H:%M") %></td>
+										<td><%= reserva.fecha_baja.strftime("%d/%m/%Y - %H:%M") %></td>
 									</tr>
 									<% end %>
 								</tbody>

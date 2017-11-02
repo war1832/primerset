@@ -7,7 +7,11 @@ class ReservasController < ApplicationController
     @date = params[:date].to_date
 
     @reservas = Reserva.where("DATE(fecha_inicio) = ? AND fecha_baja IS NULL", @date).order(:fecha_inicio)
-    @turnos_fijos = TurnosFijo.where("fecha_baja IS NULL AND dia_semana = ?", (@date.wday-1)).order(:hora_inicio)
+    @turnos_fijos = TurnosFijo.where("fecha_baja IS NULL AND dia_semana = ?", (@date.wday)).order(:hora_inicio).to_a
+    @cancelaciones = CancelacionesTurno.where("DATE(dia_cancelacion) = ? ", @date)
+
+    @cancelaciones.each{ |cancelacion| @turnos_fijos.delete_if{|turno| turno.id ==  cancelacion.turnos_fijo.id } }
+
   end
 
   def consulta

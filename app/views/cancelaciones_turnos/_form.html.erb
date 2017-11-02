@@ -1,10 +1,10 @@
 <%= form_for @cancelacion, :html => { :class => "form-horizontal" } do |f| %>
 <% if @cancelacion.errors.any? %>
 <div id="error_explanation">
-	<h2><%= pluralize(@cancelacion.errors.count, "error") %> prohibited this tipo_cliente from being saved:</h2>
+	<h2><%= pluralize(@cancelacion.errors.count, "error") %> :</h2>
 
 	<ul>
-		<% @tipo_cliente.errors.full_messages.each do |message| %>
+		<% @cancelacion.errors.full_messages.each do |message| %>
 		<li>
 			<%= message %>
 		</li>
@@ -22,7 +22,7 @@
 <div class="form-group">
 	<label class="col-sm-2 control-label">Fecha Cancelacion</label>
 	<div class="col-sm-4">
-		<input type="date" name="cancelaciones_turno[dia_cancelacion]" class="form-control">
+		<input type="date" name="cancelaciones_turno[dia_cancelacion]" value="<%=@today.strftime("%Y-%m-%d") %>" class="form-control">
 	</div>
 </div>
 				
@@ -35,7 +35,7 @@
 
 <script>
 	$( document ).ready(function() {
-		$("#cancelaciones_turno_turnos_fijo_id" ).select2({
+		$("#cancelaciones_turno_turnos_fijo_id").select2({
 			theme: "bootstrap",
 			language: "es"
 		});

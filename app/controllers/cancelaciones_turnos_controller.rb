@@ -2,29 +2,26 @@ class CancelacionesTurnosController < ApplicationController
     before_action :set_cancelacion_turno, only: [:show, :edit, :update, :destroy]
     before_filter :authenticate_user!
     
-  # GET /tipo_canchas
-  # GET /tipo_canchas.json
   def index
+    @today = Date.today
     @cancelaciones = CancelacionesTurno.all
   end
 
-  # GET /tipo_canchas/1
-  # GET /tipo_canchas/1.json
   def show
   end
 
-  # GET /tipo_canchas/new
+
   def new
+    @today = Date.today
     @cancelacion = CancelacionesTurno.new
   end
 
-  # GET /tipo_canchas/1/edit
+
   def edit
   end
 
-  # POST /tipo_canchas
-  # POST /tipo_canchas.json
   def create
+    @today = Date.today
     @cancelacion = CancelacionesTurno.new(cancelaciones_turno_params)
     @cancelacion.fecha_baja = DateTime.now
     
@@ -39,8 +36,7 @@ class CancelacionesTurnosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /tipo_canchas/1
-  # PATCH/PUT /tipo_canchas/1.json
+
   def update
     respond_to do |format|
       if @cancelacion.update(cancelaciones_turno_params)
@@ -53,12 +49,11 @@ class CancelacionesTurnosController < ApplicationController
     end
   end
 
-  # DELETE /tipo_canchas/1
-  # DELETE /tipo_canchas/1.json
+
   def destroy
     @cancelacion.destroy
     respond_to do |format|
-      format.html { redirect_to tipo_canchas_url, notice: 'Cancelacion was successfully destroyed.' }
+      format.html { redirect_to cancelaciones_turnos_url, notice: 'Cancelacion was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

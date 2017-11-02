@@ -9,7 +9,7 @@ class TurnosFijo < ActiveRecord::Base
   validate :validar_turno_fijo
   validate :validar_horario
 
-  @@dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"]
+  @@dias = {1 => "Lunes", 2=> "Martes",3=> "Miercoles", 4=> "Jueves", 5=>"Viernes", 6=> "Sabado", 0=> "Domingo"}
   
   def descripcion
       "Dia: #{@@dias[dia_semana]} - #{self.cliente.nombre_y_apellido} - #{self.cancha.descripcion}  "

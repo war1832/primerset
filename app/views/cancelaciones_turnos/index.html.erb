@@ -29,9 +29,9 @@
 										<tr>
 										<td><%= "#{cancelacion.turnos_fijo.cliente.nombre}, #{cancelacion.turnos_fijo.cliente.apellido} " %></td>
 										<td><%= "#{cancelacion.turnos_fijo.cancha.TipoCancha.descripcion} - #{cancelacion.turnos_fijo.cancha.descripcion}" %></td>
-										<td><%= cancelacion.turnos_fijo.hora_inicio %></td>
-										<td><%= cancelacion.turnos_fijo.hora_fin %></td>
-										<td><%= cancelacion.dia_cancelacion %></td>
+										<td><%= cancelacion.turnos_fijo.hora_inicio.strftime("%d/%m/%Y - %H:%M") %></td>
+										<td><%= cancelacion.turnos_fijo.hora_fin.strftime("%d/%m/%Y - %H:%M") %></td>
+										<td><%= cancelacion.dia_cancelacion.strftime("%d/%m/%Y") %></td>
 										<td><%= link_to '<i class="fa fa-user fa-fw"></i> Mostrar'.html_safe, cancelacion %></td>
 										<td><%= link_to '<i class="fa fa-edit fa-fw"></i> Editar'.html_safe, edit_cancelaciones_turno_path(cancelacion) %></td>
 										<td><%= link_to '<i class="fa fa-remove fa-fw"></i> Eliminar'.html_safe, cancelacion, method: :delete, data: { confirm: 'Are you sure?' } %></td>

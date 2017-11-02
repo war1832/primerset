@@ -40,7 +40,7 @@
 										<th>Accion</th>
 										<th>Valor Viejo</th>
 										<th>Valor Nuevo</th>
-										<th>Fecha y Hora</th>
+										<th colspan="2">Fecha y Hora</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -51,7 +51,7 @@
                                         <td><%= item.accion %></td>
 										<td><%= item.valor_viejo %></td>
 										<td><%= item.valor_nuevo %></td>
-										<td><%= item.created_at %></td>
+										<td><%= item.created_at.strftime("%d/%m/%Y - %H:%M") %></td>
 									</tr>
 									<% end %>
 								</tbody>
