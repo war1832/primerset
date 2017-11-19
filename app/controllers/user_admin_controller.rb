@@ -17,7 +17,7 @@ class UserAdminController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user
+      redirect_to user_admin_path(@user.id)
     else
       render 'new'
     end
@@ -25,7 +25,7 @@ class UserAdminController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
-    redirect_to :controller => 'user_admin', :action => 'index' unless @user.id == current_user.id
+    redirect_to :controller => 'user_admin', :action => 'index' if(!current_user.admin? && @user.id != current_user.id)
   end
   
   # PATCH/PUT /user/1

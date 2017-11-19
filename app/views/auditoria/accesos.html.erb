@@ -30,7 +30,7 @@
 									<tr>
 										<td><%= usuario.id %></td>
 										<td><%= usuario.email %></td>
-										<td><%= usuario.last_sign_in_at.strftime("%d/%m/%Y - %H:%M") %></td>
+										<td><%= usuario.last_sign_in_at.strftime("%d/%m/%Y - %H:%M") if usuario.last_sign_in_at? %></td>
 										<td><%= usuario.last_sign_in_ip %></td>
 										<td><%= usuario.sign_in_count %></td>
 										<td><%= usuario.admin? ? "Si" : "No" %></td>
