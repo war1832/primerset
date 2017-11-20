@@ -33,14 +33,22 @@ class UserAdminController < ApplicationController
   def update
     @user = User.find_by_id params[:id]
     respond_to do |format|
-      if @user.update_with_password(user_params_with_pass)
-        format.html { redirect_to :controller => 'user_admin', :action => 'show',  notice: 'El usuario se modifico correctamente.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+      if current_user.admin?
+        if @user.update_without_password(user_params)
+          format.html { redirect_to :controller => 'user_admin', :action => 'show',  notice: 'El usuario se modifico correctamente.' }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render :edit }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      elsif @user.update_with_password(user_params_with_pass)
+          format.html { redirect_to :controller => 'user_admin', :action => 'show',  notice: 'El usuario se modifico correctamente.' }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render :edit }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
-    end
   end
   
   # DELETE /canchas/1
